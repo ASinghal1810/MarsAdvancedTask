@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace MarsAdvancedTask.Driver
 {
-
+    [TestFixture]
     public class MarsDriver
     {
 
