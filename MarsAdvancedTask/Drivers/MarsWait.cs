@@ -1,5 +1,5 @@
-﻿using MarsAdvancedTask.Driver;
-using MarsAdvancedTask.Drivers;
+﻿
+using MarsAdvancedTask.Driver;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;

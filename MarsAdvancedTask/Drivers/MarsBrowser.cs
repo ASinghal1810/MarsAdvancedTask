@@ -11,17 +11,17 @@ namespace MarsAdvancedTask.Drivers
 {
     public class MarsBroswer: MarsDriver
     {
-        private IWebDriver driver;
+        private IWebDriver marsDriver;
 
-        public MarsBroswer(IWebDriver driver)
+        public MarsBroswer(IWebDriver marsDriver)
         {
-            this.driver = driver;
+            this.marsDriver = marsDriver;
         }
 
         public string MarsBroswerGetScreenShot()
         {
             Thread.Sleep(200);
-            var file = ((ITakesScreenshot)driver).GetScreenshot();
+            var file = ((ITakesScreenshot)marsDriver).GetScreenshot();
             var img = file.AsBase64EncodedString;
 
             return img;

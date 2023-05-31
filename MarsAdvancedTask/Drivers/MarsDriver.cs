@@ -17,6 +17,7 @@ namespace MarsAdvancedTask.Driver
     {
 
         public static IWebDriver marsDriver;
+        public static string testDataPath = @"C:\Users\ankur\Desktop\MarsAdvancedTask\MarsAdvancedTask\MarsAdvancedTask\MarsAdvancesTaskTestData.xlsx";
         protected MarsBroswer marsBroswer;
 
 
