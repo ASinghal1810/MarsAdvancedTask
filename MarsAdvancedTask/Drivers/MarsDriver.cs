@@ -24,7 +24,6 @@ namespace MarsAdvancedTask.Driver
         public void MarsDriverStartWebsite()
         {
             MarsExtentReporting.MarsExtentReportingCreateTest(TestContext.CurrentContext.Test.MethodName);
-
             marsDriver = new ChromeDriver();
             marsDriver.Manage().Window.Maximize();
             marsDriver.Navigate().GoToUrl("http://localhost:5000/");

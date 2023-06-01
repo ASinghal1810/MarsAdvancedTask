@@ -1,6 +1,7 @@
 ﻿using MarsAdvancedTask.Driver;
 using MarsAdvancedTask.Drivers;
 using MarsAdvancedTask.Pages;
+using Microsoft.Office.Interop.Excel;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -16,36 +17,47 @@ namespace MarsAdvancedTask.Tests
     {
         MarsLoginPage loginPage = new MarsLoginPage();
 
+
         [Test, Order(1)]
         public void LoginSuccessfully()
         {
-            MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials");
-            MarsExcelLib.MarsExcelLibPopulateInCollection(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\LoginData.xlsx", "LoginData");
-            loginPage.SignInAction(MarsExcelLib.MarsExcelLibReadData(1, "EmailAddress"), MarsExcelLib.MarsExcelLibReadData(1, "Password"));
+            loginPage.signInAction("Login with valid credentials", "LoginData", 1);        
         }
 
         [Test, Order(2)]
         public void WrongPassword()
         {
-            MarsExtentReporting.MarsExtentReportingLogInfo("Login with wrong password");
-            MarsExcelLib.MarsExcelLibPopulateInCollection(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\LoginData.xlsx", "LoginData");
-            loginPage.SignInWithInvildCredentals(MarsExcelLib.MarsExcelLibReadData(2, "EmailAddress"), MarsExcelLib.MarsExcelLibReadData(2, "Password"));
+            loginPage.invailPassword("Login with wrong password", "LoginData", 2);        
         }
 
         [Test, Order(3)]
         public void WrongEmailaddress()
         {
-            MarsExtentReporting.MarsExtentReportingLogInfo("Login with wrong email address");
-            MarsExcelLib.MarsExcelLibPopulateInCollection(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\LoginData.xlsx", "LoginData");
-            loginPage.SignInWithInvildCredentals(MarsExcelLib.MarsExcelLibReadData(3, "EmailAddress"), MarsExcelLib.MarsExcelLibReadData(3, "Password"));
+            loginPage.invailEmailaddress("Login with wrong email address", "LoginData", 3);
         }
 
         [Test, Order(4)]
         public void WrongEmailaddressAndPassword()
         {
-            MarsExtentReporting.MarsExtentReportingLogInfo("Login with wrong email address and password");
-            MarsExcelLib.MarsExcelLibPopulateInCollection(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\LoginData.xlsx", "LoginData");
-            loginPage.SignInWithInvildCredentals(MarsExcelLib.MarsExcelLibReadData(4, "EmailAddress"), MarsExcelLib.MarsExcelLibReadData(4, "Password"));
+            loginPage.invailEmailaddress("Login with wrong email address", "LoginData", 4);
+        }
+
+        [Test, Order(5)]
+        public void nullEmailaddress()
+        {
+            loginPage.invailEmailaddress("Login with wrong email address", "LoginData", 5);
+        }
+
+        [Test, Order(6)]
+        public void nullCredentals()
+        {
+            loginPage.invailEmailaddress("Login with wrong email address", "LoginData", 6);
+        }
+
+        [Test, Order(7)]
+        public void nullPassword()
+        {
+            loginPage.invailPassword("Login with wrong password", "LoginData", 7);
         }
     }
 }
