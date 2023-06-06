@@ -1,21 +1,15 @@
 ﻿using MarsAdvancedTask.Driver;
 using MarsAdvancedTask.Drivers;
-using Microsoft.Office.Interop.Excel;
+using MarsAdvancedTask.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using TechTalk.SpecFlow.CommonModels;
+using System.Text.Json;
 
 namespace MarsAdvancedTask.Pages
 {
     public class MarsLoginPage : MarsDriver
     {
+
         // Login Action Element
         private IWebElement signInButton => marsDriver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
         private IWebElement loginEmailaddress => marsDriver.FindElement(By.Name("email"));
@@ -26,15 +20,19 @@ namespace MarsAdvancedTask.Pages
         private IWebElement errorEmailMessage => marsDriver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/div"));
         private IWebElement errorPasswordMessage => marsDriver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/div"));
 
-
-
-        public void signInAction(string name, string sheetName, int key)
+        public void signInAction(string name)
         {
             MarsExtentReporting.MarsExtentReportingLogInfo(name);
-            MarsExcelLib.MarsExcelLibPopulateInCollection(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\LoginData.xlsx", sheetName);
+
+            using StreamReader reader = new(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json");
+            var json = reader.ReadToEnd();
+            List<User> users = JsonSerializer.Deserialize<List<User>>(json);
+            User user = users.ElementAt(0);
+
+
             signInButton.Click();
-            loginEmailaddress.SendKeys(MarsExcelLib.MarsExcelLibReadData(key, "EmailAddress"));
-            loginPassword.SendKeys(MarsExcelLib.MarsExcelLibReadData(key, "Password"));
+            loginEmailaddress.SendKeys(user.emailAddress);
+            loginPassword.SendKeys(user.password);
             rememberMe.Click();
             loginButton.Click();
 
@@ -51,13 +49,18 @@ namespace MarsAdvancedTask.Pages
 
         }
 
-        public void invailEmailaddress(string name, string sheetName, int key)
+        public void invailEmailaddress(string name)
         {
             MarsExtentReporting.MarsExtentReportingLogInfo(name);
-            MarsExcelLib.MarsExcelLibPopulateInCollection(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\LoginData.xlsx", sheetName);
+
+            string jsonFilePath = @"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json";
+            string serializedData = File.ReadAllText(jsonFilePath);
+            List<User> users = JsonSerializer.Deserialize<List<User>>(serializedData);
+            User user = users.ElementAt(2);
+
             signInButton.Click();
-            loginEmailaddress.SendKeys(MarsExcelLib.MarsExcelLibReadData(key, "EmailAddress"));
-            loginPassword.SendKeys(MarsExcelLib.MarsExcelLibReadData(key, "Password"));
+            loginEmailaddress.SendKeys(user.emailAddress);
+            loginPassword.SendKeys(user.password);
             rememberMe.Click();
             loginButton.Click();
 
@@ -71,13 +74,19 @@ namespace MarsAdvancedTask.Pages
             }
         }
 
-        public void invailPassword(string name, string sheetName, int key)
+        public void invailPassword(string name)
         {
             MarsExtentReporting.MarsExtentReportingLogInfo(name);
-            MarsExcelLib.MarsExcelLibPopulateInCollection(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\LoginData.xlsx", sheetName);
+
+            string jsonFilePath = @"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json";
+            string serializedData = File.ReadAllText(jsonFilePath);
+            List<User> users = JsonSerializer.Deserialize<List<User>>(serializedData);
+            User user = users.ElementAt(1);
+
+
             signInButton.Click();
-            loginEmailaddress.SendKeys(MarsExcelLib.MarsExcelLibReadData(key, "EmailAddress"));
-            loginPassword.SendKeys(MarsExcelLib.MarsExcelLibReadData(key, "Password"));
+            loginEmailaddress.SendKeys(user.emailAddress);
+            loginPassword.SendKeys(user.password);
             rememberMe.Click();
             loginButton.Click();
 
