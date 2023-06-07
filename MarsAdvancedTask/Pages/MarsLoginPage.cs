@@ -2,8 +2,8 @@
 using MarsAdvancedTask.Drivers;
 using MarsAdvancedTask.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
 using System.Text.Json;
+using OpenQA.Selenium;
 
 namespace MarsAdvancedTask.Pages
 {
@@ -20,15 +20,14 @@ namespace MarsAdvancedTask.Pages
         private IWebElement errorEmailMessage => marsDriver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/div"));
         private IWebElement errorPasswordMessage => marsDriver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/div"));
 
+
         public void signInAction(string name)
         {
             MarsExtentReporting.MarsExtentReportingLogInfo(name);
 
-            using StreamReader reader = new(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json");
-            var json = reader.ReadToEnd();
-            List<User> users = JsonSerializer.Deserialize<List<User>>(json);
+            var dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json");
+            List<User> users = JsonSerializer.Deserialize<List<User>>(dataPath);
             User user = users.ElementAt(0);
-
 
             signInButton.Click();
             loginEmailaddress.SendKeys(user.emailAddress);
@@ -49,13 +48,12 @@ namespace MarsAdvancedTask.Pages
 
         }
 
+
         public void invailEmailaddress(string name)
         {
             MarsExtentReporting.MarsExtentReportingLogInfo(name);
-
-            string jsonFilePath = @"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json";
-            string serializedData = File.ReadAllText(jsonFilePath);
-            List<User> users = JsonSerializer.Deserialize<List<User>>(serializedData);
+            var dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json");
+            List<User> users = JsonSerializer.Deserialize<List<User>>(dataPath);
             User user = users.ElementAt(2);
 
             signInButton.Click();
@@ -78,9 +76,8 @@ namespace MarsAdvancedTask.Pages
         {
             MarsExtentReporting.MarsExtentReportingLogInfo(name);
 
-            string jsonFilePath = @"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json";
-            string serializedData = File.ReadAllText(jsonFilePath);
-            List<User> users = JsonSerializer.Deserialize<List<User>>(serializedData);
+            var dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json");
+            List<User> users = JsonSerializer.Deserialize<List<User>>(dataPath);
             User user = users.ElementAt(1);
 
 
