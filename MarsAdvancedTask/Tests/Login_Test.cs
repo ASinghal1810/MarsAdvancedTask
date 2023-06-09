@@ -21,19 +21,19 @@ namespace MarsAdvancedTask.Tests
         [Test, Order(1)]
         public void LoginSuccessfully()
         {
-            loginPage.signInAction("Login with valid credentials");
+            loginPage.loginSuccessfully("Login with valid credentials");
         }
 
         [Test, Order(2)]
-        public void WrongPassword()
+        public void WrongEmailaddress()
         {
-            loginPage.invailPassword("Login with wrong password");        
+            loginPage.loginWithInvailEmailAddress("Login with wrong email address");
         }
 
         [Test, Order(3)]
-        public void WrongEmailaddress()
+        public void WrongPassword()
         {
-            loginPage.invailEmailaddress("Login with wrong email address");
+            loginPage.loginWithInvailPassword("Login with wrong password");        
         }
     }
 }

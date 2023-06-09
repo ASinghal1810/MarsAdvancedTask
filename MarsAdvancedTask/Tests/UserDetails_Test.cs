@@ -15,20 +15,20 @@ namespace MarsAdvancedTask.Tests
     public class UserDetails_Test : MarsDriver
     {
         MarsLoginPage loginPage = new MarsLoginPage();
-        MarsProfileUserDetails userDetails = new MarsProfileUserDetails();
+        MarsProfilePage profilePage = new MarsProfilePage();
 
         [Test, Order(1)]
         public void addUserDetails()
         {
-            loginPage.signInAction("Login Successfully!");
-            userDetails.addUserDetails("User details has been added!");
+            loginPage.loginSuccessfully("Login Successfully!");
+            profilePage.addProfileUserDetail("User details has been added!!");
         }
 
         [Test, Order(2)]
         public void editUserDetails()
         {
-            loginPage.signInAction("Login Successfully!");
-            userDetails.editUserDetails("User details has been edited!!");
+            loginPage.loginSuccessfully("Login Successfully!");
+            profilePage.editProfileUserDetail("User details has been edited!!");
         }
     }
 }

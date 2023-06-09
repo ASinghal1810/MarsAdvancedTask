@@ -4,97 +4,30 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using Newtonsoft.Json;
 using MarsAdvancedTask.Components.LoginPageComponents;
+using Microsoft.Office.Interop.Excel;
 
 namespace MarsAdvancedTask.Pages
 {
     public class MarsLoginPage : MarsDriver
     {
+        MarsLogin marsLogin = new MarsLogin();
 
-        // Login Action Element
-        private IWebElement signInButton => marsDriver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
-        private IWebElement loginEmailaddress => marsDriver.FindElement(By.Name("email"));
-        private IWebElement loginPassword => marsDriver.FindElement(By.Name("password"));
-        private IWebElement rememberMe => marsDriver.FindElement(By.Name("rememberDetails"));
-        private IWebElement loginButton => marsDriver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
-        private IWebElement actualAccountName => marsDriver.FindElement(By.XPath("//div[contains(text(), \"Eddie He\")]"));
-        private IWebElement errorEmailMessage => marsDriver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/div"));
-        private IWebElement errorPasswordMessage => marsDriver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/div"));
-
-
-        public void signInAction(string name)
+        public void loginSuccessfully(string name)
         {
             MarsExtentReporting.MarsExtentReportingLogInfo(name);
-
-            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json");
-            Users users = JsonConvert.DeserializeObject<Users>(dataPath);
-            User user = users.users.ElementAt(0);
-
-            signInButton.Click();
-            loginEmailaddress.SendKeys(user.emailAddress);
-            loginPassword.SendKeys(user.password);
-            rememberMe.Click();
-            loginButton.Click();
-
-            // Assertion message
-            MarsWait.MarsWaitToBeVisible("XPath", 5, "//div[contains(text(), \"Eddie He\")]");
-            if (actualAccountName.Text == "Eddie He")
-            {
-                Console.WriteLine("Pass");
-            }
-            else
-            {
-                Assert.Fail("Actual message and expected message do not match!");
-            }
-
+            marsLogin.loginWithValidCredentails();
         }
 
-
-        public void invailEmailaddress(string name)
+        public void loginWithInvailEmailAddress(string name)
         {
             MarsExtentReporting.MarsExtentReportingLogInfo(name);
-
-            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json");
-            Users users = JsonConvert.DeserializeObject<Users>(dataPath);
-            User user = users.users.ElementAt(2);
-
-            signInButton.Click();
-            loginEmailaddress.SendKeys(user.emailAddress);
-            loginPassword.SendKeys(user.password);
-            rememberMe.Click();
-            loginButton.Click();
-
-            if (errorEmailMessage.Text == "Please enter a valid email address")
-            {
-                Console.WriteLine("Pass");
-            }
-            else
-            {
-                Assert.Fail("Actual message and expected message do not match!");
-            }
+            marsLogin.invailEmailaddress();
         }
-        
-        public void invailPassword(string name)
+
+        public void loginWithInvailPassword(string name)
         {
             MarsExtentReporting.MarsExtentReportingLogInfo(name);
-
-            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json");
-            Users users = JsonConvert.DeserializeObject<Users>(dataPath);
-            User user = users.users.ElementAt(1);
-
-            signInButton.Click();
-            loginEmailaddress.SendKeys(user.emailAddress);
-            loginPassword.SendKeys(user.password);
-            rememberMe.Click();
-            loginButton.Click();
-
-            if (errorPasswordMessage.Text == "Password must be at least 6 characters")
-            {
-                Console.WriteLine("Pass");
-            }
-            else
-            {
-                Assert.Fail("Actual message and expected message do not match!");
-            }
+            marsLogin.invailPassword();
         }
     }
 }

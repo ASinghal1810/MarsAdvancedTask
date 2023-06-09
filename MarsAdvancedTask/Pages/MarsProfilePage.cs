@@ -19,11 +19,16 @@ namespace MarsAdvancedTask.Pages
         MarsProfileEducation education = new MarsProfileEducation();
 
 
-        public void profileUserDetail(string name)
+        public void addProfileUserDetail(string name)
         {
             MarsExtentReporting.MarsExtentReportingLogInfo(name);
-            userDetails.setupUserDetails();
-        }
+            userDetails.addUserDetails();
 
+        }
+        public void editProfileUserDetail(string name)
+        {
+            MarsExtentReporting.MarsExtentReportingLogInfo(name);
+            userDetails.editUserDetails();
+        }
     }
 }

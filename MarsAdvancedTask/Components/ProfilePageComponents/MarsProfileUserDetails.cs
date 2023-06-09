@@ -28,10 +28,8 @@ namespace MarsAdvancedTask.Components.ProfilePageComponents
         private IWebElement lessThanOption => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[4]/div/span/select/option[1]"));
         private IWebElement updateSuccessfullyMessage => marsDriver.FindElement(By.XPath("/html/body/div[1]/div"));
 
-        public void addUserDetails(string name)
+        public void addUserDetails()
         {
-            MarsExtentReporting.MarsExtentReportingLogInfo(name);
-
             MarsWait.MarsWaitToBeClickable("XPath", 5, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span/i");
             // Identify Availablity and select Full time option
             availabilityPenIcon.Click();
@@ -59,10 +57,8 @@ namespace MarsAdvancedTask.Components.ProfilePageComponents
             }
         }
 
-        public void editUserDetails(string name)
+        public void editUserDetails()
         {
-            MarsExtentReporting.MarsExtentReportingLogInfo(name);
-
             MarsWait.MarsWaitToBeClickable("XPath", 5, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span/i");
             // Identify Availablity and select Part time option
             availabilityPenIcon.Click();
@@ -91,5 +87,5 @@ namespace MarsAdvancedTask.Components.ProfilePageComponents
         }
     }
 
-    }
 }
+
