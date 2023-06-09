@@ -1,6 +1,6 @@
-﻿using MarsAdvancedTask.Driver;
+﻿using MarsAdvancedTask.Components.ProfilePageComponents;
+using MarsAdvancedTask.Driver;
 using MarsAdvancedTask.Drivers;
-using MarsAdvancedTask.Pages.MarsProfilePages;
 using Microsoft.Office.Interop.Excel;
 using OpenQA.Selenium;
 using System;

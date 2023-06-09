@@ -1,9 +1,9 @@
 ﻿using MarsAdvancedTask.Driver;
 using MarsAdvancedTask.Drivers;
-using MarsAdvancedTask.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using Newtonsoft.Json;
+using MarsAdvancedTask.Components.LoginPageComponents;
 
 namespace MarsAdvancedTask.Pages
 {

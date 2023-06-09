@@ -1,8 +1,6 @@
 ﻿using MarsAdvancedTask.Components.ProfilePageComponents;
 using MarsAdvancedTask.Driver;
-using MarsAdvancedTask.Drivers;
 using MarsAdvancedTask.Pages;
-using Microsoft.Office.Interop.Excel;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -14,26 +12,23 @@ namespace MarsAdvancedTask.Tests
 {
     [TestFixture]
     [Parallelizable]
-    public class Login_Test : MarsDriver
+    public class UserDetails_Test : MarsDriver
     {
         MarsLoginPage loginPage = new MarsLoginPage();
+        MarsProfileUserDetails userDetails = new MarsProfileUserDetails();
 
         [Test, Order(1)]
-        public void LoginSuccessfully()
+        public void addUserDetails()
         {
-            loginPage.signInAction("Login with valid credentials");
+            loginPage.signInAction("Login Successfully!");
+            userDetails.addUserDetails("User details has been added!");
         }
 
         [Test, Order(2)]
-        public void WrongPassword()
+        public void editUserDetails()
         {
-            loginPage.invailPassword("Login with wrong password");        
-        }
-
-        [Test, Order(3)]
-        public void WrongEmailaddress()
-        {
-            loginPage.invailEmailaddress("Login with wrong email address");
+            loginPage.signInAction("Login Successfully!");
+            userDetails.editUserDetails("User details has been edited!!");
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarsAdvancedTask.Model
+namespace MarsAdvancedTask.Components.LoginPageComponents
 {
     public class User
     {
