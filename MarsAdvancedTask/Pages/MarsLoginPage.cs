@@ -2,8 +2,8 @@
 using MarsAdvancedTask.Drivers;
 using MarsAdvancedTask.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Text.Json;
 using OpenQA.Selenium;
+using Newtonsoft.Json;
 
 namespace MarsAdvancedTask.Pages
 {
@@ -25,9 +25,9 @@ namespace MarsAdvancedTask.Pages
         {
             MarsExtentReporting.MarsExtentReportingLogInfo(name);
 
-            var dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json");
-            List<User> users = JsonSerializer.Deserialize<List<User>>(dataPath);
-            User user = users.ElementAt(0);
+            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json");
+            Users users = JsonConvert.DeserializeObject<Users>(dataPath);
+            User user = users.users.ElementAt(0);
 
             signInButton.Click();
             loginEmailaddress.SendKeys(user.emailAddress);
@@ -52,9 +52,10 @@ namespace MarsAdvancedTask.Pages
         public void invailEmailaddress(string name)
         {
             MarsExtentReporting.MarsExtentReportingLogInfo(name);
-            var dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json");
-            List<User> users = JsonSerializer.Deserialize<List<User>>(dataPath);
-            User user = users.ElementAt(2);
+
+            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json");
+            Users users = JsonConvert.DeserializeObject<Users>(dataPath);
+            User user = users.users.ElementAt(2);
 
             signInButton.Click();
             loginEmailaddress.SendKeys(user.emailAddress);
@@ -71,15 +72,14 @@ namespace MarsAdvancedTask.Pages
                 Assert.Fail("Actual message and expected message do not match!");
             }
         }
-
+        
         public void invailPassword(string name)
         {
             MarsExtentReporting.MarsExtentReportingLogInfo(name);
 
-            var dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json");
-            List<User> users = JsonSerializer.Deserialize<List<User>>(dataPath);
-            User user = users.ElementAt(1);
-
+            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json");
+            Users users = JsonConvert.DeserializeObject<Users>(dataPath);
+            User user = users.users.ElementAt(1);
 
             signInButton.Click();
             loginEmailaddress.SendKeys(user.emailAddress);

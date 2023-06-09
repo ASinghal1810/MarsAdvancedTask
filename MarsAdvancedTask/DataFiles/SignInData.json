@@ -1,17 +1,17 @@
-[
-  {
-    "user": {
-      "emailAddress": "eddie510@gmail.com",
-      "password": "eddie123"
-    },
-    {
-      "emailAddress": "eddie510@gmail.com",
-      "password": "!@#@!"
-    },
-    {
-       "emailAddress": "!#!#!@gmail.com",
-       "password": "eddie123"
-    }
-  }
-]
+{
+    "users": [
+      {
+        "emailAddress": "eddie510@gmail.com",
+        "password": "eddie123"
+      },
+      {
+        "emailAddress": "eddie510@gmail.com",
+        "password": "!@#@!"
+      },
+      {
+        "emailAddress": "!#!#!@gmail.com",
+        "password": "eddie123"
+      }
+    ]
+}
 
