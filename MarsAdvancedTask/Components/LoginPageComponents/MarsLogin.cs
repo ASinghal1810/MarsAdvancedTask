@@ -27,9 +27,10 @@ namespace MarsAdvancedTask.Components.LoginPageComponents
 
         public void loginWithValidCredentails()
         {
-            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json");
-            Users users = JsonConvert.DeserializeObject<Users>(dataPath);
-            User user = users.users.ElementAt(0);
+            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\LoginData\User1.json");
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+            User user = users.ElementAt(0);
+            
 
             signInButton.Click();
             loginEmailaddress.SendKeys(user.emailAddress);
@@ -51,9 +52,9 @@ namespace MarsAdvancedTask.Components.LoginPageComponents
         }
         public void invailEmailaddress()
         {
-            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json");
-            Users users = JsonConvert.DeserializeObject<Users>(dataPath);
-            User user = users.users.ElementAt(2);
+            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\LoginData\User2.json");
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+            User user = users.ElementAt(0);
 
             signInButton.Click();
             loginEmailaddress.SendKeys(user.emailAddress);
@@ -73,9 +74,96 @@ namespace MarsAdvancedTask.Components.LoginPageComponents
 
         public void invailPassword()
         {
-            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SignInData.json");
-            Users users = JsonConvert.DeserializeObject<Users>(dataPath);
-            User user = users.users.ElementAt(1);
+            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\LoginData\User3.json");
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+            User user = users.ElementAt(0);
+
+            signInButton.Click();
+            loginEmailaddress.SendKeys(user.emailAddress);
+            loginPassword.SendKeys(user.password);
+            rememberMe.Click();
+            loginButton.Click();
+
+            if (errorPasswordMessage.Text == "Password must be at least 6 characters")
+            {
+                Console.WriteLine("Pass");
+            }
+            else
+            {
+                Assert.Fail("Actual message and expected message do not match!");
+            }
+        }
+        public void invailEmailAddressAndPassword()
+        {
+            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\LoginData\User4.json");
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+            User user = users.ElementAt(0);
+
+            signInButton.Click();
+            loginEmailaddress.SendKeys(user.emailAddress);
+            loginPassword.SendKeys(user.password);
+            rememberMe.Click();
+            loginButton.Click();
+
+            if (errorPasswordMessage.Text == "Password must be at least 6 characters")
+            {
+                Console.WriteLine("Pass");
+            }
+            else
+            {
+                Assert.Fail("Actual message and expected message do not match!");
+            }
+        }
+
+        public void nullEmailAddress()
+        {
+            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\LoginData\User5.json");
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+            User user = users.ElementAt(0);
+
+            signInButton.Click();
+            loginEmailaddress.SendKeys(user.emailAddress);
+            loginPassword.SendKeys(user.password);
+            rememberMe.Click();
+            loginButton.Click();
+
+            if (errorEmailMessage.Text == "Please enter a valid email address")
+            {
+                Console.WriteLine("Pass");
+            }
+            else
+            {
+                Assert.Fail("Actual message and expected message do not match!");
+            }
+        }
+
+        public void nullEmailAddressAndPassword()
+        {
+            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\LoginData\User6.json");
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+            User user = users.ElementAt(0);
+
+            signInButton.Click();
+            loginEmailaddress.SendKeys(user.emailAddress);
+            loginPassword.SendKeys(user.password);
+            rememberMe.Click();
+            loginButton.Click();
+
+            if (errorPasswordMessage.Text == "Password must be at least 6 characters")
+            {
+                Console.WriteLine("Pass");
+            }
+            else
+            {
+                Assert.Fail("Actual message and expected message do not match!");
+            }
+        }
+
+        public void nullPassword()
+        {
+            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\LoginData\User7.json");
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+            User user = users.ElementAt(0);
 
             signInButton.Click();
             loginEmailaddress.SendKeys(user.emailAddress);

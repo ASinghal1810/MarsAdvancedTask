@@ -1,0 +1,20 @@
+﻿[
+  {
+    "emailAddress": "eddie510@gmail.com",
+    "password": "eddie123",
+    "languages": [
+      { "language": "English" },
+      { "language": "Chinese" },
+      { "language": "Japanese" },
+      { "language": "Cantonese" }
+    ],
+    "descriptions": [
+      { "description": "I am Eddie, I am a Jazz music true lover!!!" },
+      { "description": "HELLO EVERYONE!!" }
+    ],
+    "searchSkills": [
+      { "skill": "Music" },
+      { "skill": "Fun" }
+    ]
+  }
+]

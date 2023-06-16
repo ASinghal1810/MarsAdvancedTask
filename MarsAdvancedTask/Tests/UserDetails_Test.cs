@@ -22,6 +22,7 @@ namespace MarsAdvancedTask.Tests
         {
             loginPage.loginSuccessfully("Login Successfully!");
             profilePage.addProfileUserDetail("User details has been added!!");
+            profilePage.notificationMarkAsRead("First Notification has been marked as read!");
         }
 
         [Test, Order(2)]

@@ -19,21 +19,45 @@ namespace MarsAdvancedTask.Tests
         MarsLoginPage loginPage = new MarsLoginPage();
 
         [Test, Order(1)]
-        public void LoginSuccessfully()
+        public void loginSuccessfully()
         {
             loginPage.loginSuccessfully("Login with valid credentials");
         }
 
         [Test, Order(2)]
-        public void WrongEmailaddress()
+        public void invailEmailaddress()
         {
-            loginPage.loginWithInvailEmailAddress("Login with wrong email address");
+            loginPage.loginWithInvailEmailAddress("Login with invail email address");
         }
 
         [Test, Order(3)]
-        public void WrongPassword()
+        public void invailPassword()
         {
-            loginPage.loginWithInvailPassword("Login with wrong password");        
+            loginPage.loginWithInvailPassword("Login with invail password");        
+        }
+
+        [Test, Order(4)]
+        public void invailEmailAddressAndPassword()
+        {
+            loginPage.loginWithInvailEmailAddressAndPassword("Login with invail emailaddress and password");
+        }
+
+        [Test, Order(5)]
+        public void nullEmailAddress()
+        {
+            loginPage.loginWithNullEmailAddress("Login with null emailaddress");
+        }
+
+        [Test, Order(6)]
+        public void nullEmailAddressAndPassword()
+        {
+            loginPage.loginWithNullEmailAddressAndPassword("Login with null emailaddress and null password");
+        }
+
+        [Test, Order(7)]
+        public void nullPassword()
+        {
+            loginPage.loginWithNullPassword("Login with null password");
         }
     }
 }

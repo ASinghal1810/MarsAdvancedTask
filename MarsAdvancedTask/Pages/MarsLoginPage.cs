@@ -29,6 +29,30 @@ namespace MarsAdvancedTask.Pages
             MarsExtentReporting.MarsExtentReportingLogInfo(name);
             marsLogin.invailPassword();
         }
+
+        public void loginWithInvailEmailAddressAndPassword(string name)
+        {
+            MarsExtentReporting.MarsExtentReportingLogInfo(name);
+            marsLogin.invailEmailAddressAndPassword();
+        }
+
+        public void loginWithNullEmailAddress(string name)
+        {
+            MarsExtentReporting.MarsExtentReportingLogInfo(name);
+            marsLogin.nullEmailAddress();
+        }
+
+        public void loginWithNullEmailAddressAndPassword(string name)
+        {
+            MarsExtentReporting.MarsExtentReportingLogInfo(name);
+            marsLogin.nullEmailAddressAndPassword();
+        }
+
+        public void loginWithNullPassword(string name)
+        {
+            MarsExtentReporting.MarsExtentReportingLogInfo(name);
+            marsLogin.nullPassword();
+        }
     }
 }
 
