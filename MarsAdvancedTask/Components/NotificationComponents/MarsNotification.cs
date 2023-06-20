@@ -31,7 +31,7 @@ namespace MarsAdvancedTask.Components.NotificationComponents
             firstNoticCheckBox.Click();
             markAsReadTag.Click();
 
-            MarsWait.MarsWaitToBeVisible("XPath", 5, "/html/body/div[1]/div");
+            MarsWait.MarsWaitToBeVisible("XPath", 10, "/html/body/div[1]/div");
             if(successfulMessage.Text == "Notification updated")
             {
                 Console.WriteLine("Pass");

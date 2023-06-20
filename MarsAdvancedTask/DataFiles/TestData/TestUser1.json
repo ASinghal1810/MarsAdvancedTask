@@ -8,6 +8,40 @@
       { "language": "Japanese" },
       { "language": "Cantonese" }
     ],
+    "skillListings": [
+      {
+        "title": "Jazz Club",
+        "description": "Hi Everyone, welcome to the JAZZ music show!!",
+        "tags": [
+          { "tag": "Jazz" },
+          { "tag": "LiveHouse" }
+        ],
+        "startDate": "30/06/2023",
+        "endDate": "20/12/2023",
+        "startTime": "9:00",
+        "endTime": "12:00",
+        "skillExchangeTags": [
+          { "skillExchangeTag": "Blue" },
+          { "skillExchangeTag": "Funk" }
+        ]
+      },
+      {
+        "title": "FPS GAME",
+        "description": "You can share your FPS game exprience here!",
+        "tags": [
+          { "tag": "CSGO" },
+          { "tag": "COD" }
+        ],
+        "startDate": "20/07/2023",
+        "endDate": "20/12/2023",
+        "startTime": "8:00",
+        "endTime": "11:00",
+        "skillExchangeTags": [
+          { "skillExchangeTag": "RPG Game" },
+          { "skillExchangeTag": "Music Game" }
+        ]
+      }
+    ],
     "descriptions": [
       { "description": "I am Eddie, I am a Jazz music true lover!!!" },
       { "description": "HELLO EVERYONE!!" }

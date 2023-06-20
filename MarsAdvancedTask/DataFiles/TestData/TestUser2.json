@@ -1,0 +1,21 @@
+﻿[
+  {
+    "emailAddress": "451075672@qq.com",
+    "password": "abc123",
+    "languages": [
+      { "language": "Mandarin" },
+      { "language": "French" },
+      { "language": "German" },
+      { "language": "Arabic" }
+    ],
+    "descriptions": [
+      { "description": "I like different types of languages very much, because they each have their own charm, if you also like different types of languages, welcome to join me." },
+      { "description": "HELLO EVERYONE!!" }
+    ],
+    "searchSkills": [
+      { "skill": "Writing" },
+      { "skill": "Business" }
+    ]
+  }
+]
+
