@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarsAdvancedTask.ComponentsProfilePage
+namespace MarsAdvancedTask.Pages.HomePage.Components.Profile.ComponentsProfilePage.Certification
 {
-    public class marsProfilePageCertifications:MarsDriver
+    public class marsProfilePageCertifications : MarsDriver
     {
         private IWebElement MarsProfilePageCertificationsTab => marsDriver.FindElement(By.XPath("//*[@data-tab=\"fourth\" and contains(text(),'Certifications')]"));
         private IWebElement MarsProfilePageCertificationsAddNewButton => marsDriver.FindElement(By.XPath("//div[@class='ui teal button' and contains(text(),'Add New')]"));

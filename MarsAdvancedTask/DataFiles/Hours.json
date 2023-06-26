@@ -1,0 +1,17 @@
+﻿{
+  "profileHours": [
+    {
+
+      "Hours": "Less than 30hours a week"
+    },
+    {
+
+      "Hours": "More than 30hours a week"
+    },
+    {
+
+      "Hours": "As needed"
+    }
+  ]
+}
+   

@@ -1,0 +1,66 @@
+﻿{
+  "users": [
+    {
+      "Username": "ankursinghal9118@gmail.com",
+      "Password": "Singhal&18",
+      "ExpectedResult": "Success"
+      
+      
+    },
+    {
+      "Username": "Ankursinghal9118@gmail.com",
+      "Password": "Singhal&18",
+      "ExpectedResult": "Fail"
+    },
+    {
+      "Username": "ankursinghal9118@gmail.com",
+      "Password": "Singhal&18",
+      "ExpectedResult": "Success"
+    },
+    {
+      "Username": "Ankursinghal9118@gmail.com",
+      "Password": "Singhal&18",
+      "ExpectedResult": "Fail"
+    },
+    {
+      "Username": "ankursinghal9118@gmail.com  ",
+      "Password": "  Singhal&18",
+      "ExpectedResult": "Fail"
+    },
+    {
+      "Username": "ankursinghal$9118@gmail.com  ",
+      "Password": "  Singhal&18",
+      "ExpectedResult": "Fail"
+    },
+    {
+      "Username": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@gmail.com",
+      "Password": "Singhal&18",
+      "ExpectedResult": "Fail"
+
+    },
+    {
+      "Username": "ankursinghal9118@gmail.com",
+      "Password": "Singhal&1888888888888888888888888888888888888888888888888888888",
+      "ExpectedResult": "Fail"
+
+    },
+    {
+      "Username": "",
+      "Password": "",
+      "ExpectedResult": "Fail"
+
+    },
+    {
+      "Username": "123",
+      "Password": "123",
+      "ExpectedResult": "Fail"
+
+    },
+    {
+      "Username": "",
+      "Password": "",
+      "ExpectedResult": "Fail"
+
+    }
+  ]
+}

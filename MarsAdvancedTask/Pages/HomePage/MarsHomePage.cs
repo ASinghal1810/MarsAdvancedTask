@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarsAdvancedTask.Pages
+namespace MarsAdvancedTask.Pages.HomePage
 {
-    internal class MarsShareSkillPage
+    internal class MarsHomePage
     {
     }
 }

@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarsAdvancedTask.ComponentsProfilePage
+namespace MarsAdvancedTask.Pages.HomePage.Components.Profile.ComponentsProfilePage.Education
 {
-    public class marsProfilePageEducation:MarsDriver
+    public class marsProfilePageEducation : MarsDriver
     {
         private IWebElement MarsProfilePageEducationTab => marsDriver.FindElement(By.XPath("//*[@class=\"item\" and @data-tab=\"second\"]"));
         private IWebElement MarsProfilePageEducationAddNewButton => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div"));
