@@ -42,22 +42,24 @@ namespace MarsAdvancedTask.Pages.HomePage.Components.Profile
         }
         public void profileEditButtonHours(int i)
         {
+                Thread.Sleep(500);
                 hours.Click();
-                string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Loc.json");
+                string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Hours.json");
                 Profiles profiles = JsonConvert.DeserializeObject<Profiles>(dataJson);
                 Profile profile = profiles.profileHours.ElementAt(i);
-                SelectElement selavail = new SelectElement(marsDriver.FindElement(By.CssSelector("#account-profile-section > div > section:nth-child(3) > div > div > div > div.four.wide.column > div > div > div > div > div > div.extra.content > div > div:nth-child(2) > div > span > select")));
-                selavail.SelectByText(profile.Hours);
+                SelectElement selhr = new SelectElement(marsDriver.FindElement(By.CssSelector("#account-profile-section > div > section:nth-child(3) > div > div > div > div.four.wide.column > div > div > div > div > div > div.extra.content > div > div:nth-child(3) > div > span > select")));
+                selhr.SelectByText(profile.Hours);
             
         }
         public void profileEditButtonEarnTarget(int i)
         {
+                Thread.Sleep(500);
                 earnTarget.Click();
-                string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Loc.json");
+                string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\EarnTarget.json");
                 Profiles profiles = JsonConvert.DeserializeObject<Profiles>(dataJson);
                 Profile profile = profiles.profileEarnTarget.ElementAt(i);
-                SelectElement selavail = new SelectElement(marsDriver.FindElement(By.CssSelector("#account-profile-section > div > section:nth-child(3) > div > div > div > div.four.wide.column > div > div > div > div > div > div.extra.content > div > div:nth-child(2) > div > span > select")));
-                selavail.SelectByText(profile.EarnTarget);
+                SelectElement selET = new SelectElement(marsDriver.FindElement(By.CssSelector("#account-profile-section > div > section:nth-child(3) > div > div > div > div.four.wide.column > div > div > div > div > div > div.extra.content > div > div:nth-child(4) > div > span > select")));
+                selET.SelectByText(profile.EarnTarget);
            
         }
         

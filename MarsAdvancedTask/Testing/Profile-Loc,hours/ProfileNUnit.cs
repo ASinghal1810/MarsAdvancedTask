@@ -32,52 +32,60 @@ namespace MarsAdvancedTask
         {
             string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData.json");
             Users users = JsonConvert.DeserializeObject<Users>(dataJson);
-            User user = users.users.ElementAt(0);
-            Thread.Sleep(200);
-            marsMstrPgObj.MarsMasterPageNavigateToSignInForm();
-            Thread.Sleep(200);
-            marsMstrPgObj.MarsMasterPageLoginUser(lMObj.userUsername(0), lMObj.userPassword(0));
-            Thread.Sleep(2000);
-            profileMethods.profileEditButtonAvailability(0);
             
+                User user = users.users.ElementAt(0);
+                Thread.Sleep(200);
+                marsMstrPgObj.MarsMasterPageNavigateToSignInForm();
+                Thread.Sleep(200);
+                marsMstrPgObj.MarsMasterPageLoginUser(lMObj.userUsername(0), lMObj.userPassword(0));
+                Thread.Sleep(2000);
+            for (int i = 0; i < 2; i++)
+            {
+                profileMethods.profileEditButtonAvailability(i);
+            }
             
         }
-        [Test, Order(1), Description("Profile --> Hours")]
+        [Test, Order(2), Description("Profile --> Hours")]
         public void TestCaseHours()
         {
             string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData.json");
             Users users = JsonConvert.DeserializeObject<Users>(dataJson);
-
-            User user = users.users.ElementAt(0);
-
-            Thread.Sleep(200);
-            marsMstrPgObj.MarsMasterPageNavigateToSignInForm();
-
-            Thread.Sleep(200);
-            marsMstrPgObj.MarsMasterPageLoginUser(lMObj.userUsername(0), lMObj.userPassword(0));
-            Thread.Sleep(2000);
-            profileMethods.profileEditButtonHours(0);
             
+                User user = users.users.ElementAt(0);
+
+                Thread.Sleep(200);
+                marsMstrPgObj.MarsMasterPageNavigateToSignInForm();
+
+                Thread.Sleep(200);
+                marsMstrPgObj.MarsMasterPageLoginUser(lMObj.userUsername(0), lMObj.userPassword(0));
+                Thread.Sleep(2000);
+            for (int i = 0; i < 3; i++)
+            {
+                profileMethods.profileEditButtonHours(i);
+            }
         }
-        [Test, Order(1), Description("Profile --> Earn Target")]
+        [Test, Order(3), Description("Profile --> Earn Target")]
         public void TestCaseEarnTarget()
         {
             string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData.json");
             Users users = JsonConvert.DeserializeObject<Users>(dataJson);
-
-            User user = users.users.ElementAt(0);
-
-            Thread.Sleep(200);
-            marsMstrPgObj.MarsMasterPageNavigateToSignInForm();
-
-            Thread.Sleep(200);
-            marsMstrPgObj.MarsMasterPageLoginUser(lMObj.userUsername(0), lMObj.userPassword(0));
-            Thread.Sleep(2000);
-            profileMethods.profileEditButtonEarnTarget(0);
             
+                User user = users.users.ElementAt(0);
+
+                Thread.Sleep(200);
+                marsMstrPgObj.MarsMasterPageNavigateToSignInForm();
+
+                Thread.Sleep(200);
+                marsMstrPgObj.MarsMasterPageLoginUser(lMObj.userUsername(0), lMObj.userPassword(0));
+                Thread.Sleep(2000);
+                for (int i = 0; i < 3; i++)
+                {
+                    profileMethods.profileEditButtonEarnTarget(i);
+                }
+            }
         }
 
     }
-}
+
 
 
