@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace MarsAdvancedTask.Pages.HomePage.Components.Profile.ComponentsProfilePage.Certification
 {
-    public class Certification
+    public class Certifications
     {
-        public string Certificate { get; set; }
-        public string Institution { get; set; }
-        public string Year { get; set; }
+        public List<Certification> certifications { get; set; }
     }
 }

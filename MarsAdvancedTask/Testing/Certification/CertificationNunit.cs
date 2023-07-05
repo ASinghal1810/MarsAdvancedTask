@@ -1,38 +1,86 @@
-﻿//using MarsAdvancedTask.Driver;
-//using MarsAdvancedTask.Pages.MasterPage.Login;
-//using MarsAdvancedTask.Pages.MasterPage;
-//using NUnit.Framework;
-//using System.Text.Json;
-//using Newtonsoft.Json;
-//using Newtonsoft.Json.Serialization;
-//using MarsAdvancedTask.Pages;
-//using MarsAdvancedTask.Drivers;
+﻿using MarsAdvancedTask.Driver;
+using Newtonsoft.Json;
+using NUnit.Framework;
+using MarsAdvancedTask.Pages.MasterPage;
+using MarsAdvancedTask.Drivers;
+using MarsAdvancedTask.Pages.MasterPage.Login;
+using MarsAdvancedTask.Pages.HomePage.Components.Profile;
+using OpenQA.Selenium;
+using MarsAdvancedTask.Pages.HomePage.Components.Profile.ComponentsProfilePage.Certification;
 
-//namespace MarsAdvancedTask
-//{
-//    [TestFixture]
-//    [Parallelizable]
+namespace MarsAdvancedTask
+{
+    [TestFixture]
+    [Parallelizable]
 
-//    public class CertificationNunit : MarsDriver
-//    {
+    public class CertificationNUnit : MarsDriver
+    {
 
-//        MarsMasterPage marsMstrPgObj = new MarsMasterPage();
-//        //JsonReaderABC js = new JsonReaderABC();
+        MarsMasterPage marsMstrPgObj => new MarsMasterPage();
+        LoginMethods lMObj => new LoginMethods();
+        LoginAssertion lAObj => new LoginAssertion();
 
-//        //var data = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData.json");
-//        //List<Root> login = JsonSerializer.Deserialize<List<Root>>(data);
-//        //Root user = login.ElementAt(0);
+        MarsProfilePageCertificationsMethods certObj = new MarsProfilePageCertificationsMethods();
+        private IWebElement xpathnew => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span/select"));
+
+        ProfileMethods profileMethods => new ProfileMethods();
 
 
-//        [Test, Order(1)]
+        [Test, Order(1), Description("Profile --> Certification Add")]
+        public void TestCaseAdd()
+        {
+            string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData.json");
+            Users users = JsonConvert.DeserializeObject<Users>(dataJson);
 
-//        public void TestCaseOne()
-//        {
-//            //js.JsonRead();
-//            marsMstrPgObj.MarsMasterPageNavigateToSignInForm();
-//            //marsProPgObj.MarsProfilePageAddNewCertification(1);
-//        }
-//    }
-//}
+            User user = users.users.ElementAt(0);
+            Thread.Sleep(200);
+            marsMstrPgObj.MarsMasterPageNavigateToSignInForm();
+            Thread.Sleep(200);
+            marsMstrPgObj.MarsMasterPageLoginUser(lMObj.userUsername(0), lMObj.userPassword(0));
+            Thread.Sleep(2000);
+            certObj.marsProfilePageCertificationsAddClick();
+            
+                certObj.marsProfilePageCertificationsAdd();
+            
 
+        }
+        [Test, Order(1), Description("Profile --> Certification Edit")]
+        public void TestCaseEdit()
+        {
+            string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData.json");
+            Users users = JsonConvert.DeserializeObject<Users>(dataJson);
+
+            User user = users.users.ElementAt(0);
+            Thread.Sleep(200);
+            marsMstrPgObj.MarsMasterPageNavigateToSignInForm();
+            Thread.Sleep(200);
+            marsMstrPgObj.MarsMasterPageLoginUser(lMObj.userUsername(0), lMObj.userPassword(0));
+            Thread.Sleep(2000);
+            certObj.marsProfilePageCertificationsAddClick();
+
+            certObj.marsProfilePageCertificationsAdd();
+
+
+        }
+        [Test, Order(1), Description("Profile --> Certification Delete")]
+        public void TestCaseDelete()
+        {
+            string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData.json");
+            Users users = JsonConvert.DeserializeObject<Users>(dataJson);
+
+            User user = users.users.ElementAt(0);
+            Thread.Sleep(200);
+            marsMstrPgObj.MarsMasterPageNavigateToSignInForm();
+            Thread.Sleep(200);
+            marsMstrPgObj.MarsMasterPageLoginUser(lMObj.userUsername(0), lMObj.userPassword(0));
+            Thread.Sleep(2000);
+            certObj.marsProfilePageCertificationsAddClick();
+
+            certObj.marsProfilePageCertificationsAdd();
+
+
+        }
+
+    }
+}
 
