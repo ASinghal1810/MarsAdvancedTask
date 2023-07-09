@@ -8,9 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <COMReference Include="AutoItX3Lib">
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>f8937e53-d444-4e71-9275-35b64210cc3b</Guid>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Appium.WebDriver" Version="4.4.5" />
-    <PackageReference Include="AutoItX.Dotnet" Version="3.3.14.5" />
-    <PackageReference Include="AutoItX3.Net" Version="3.3.16.1" />
     <PackageReference Include="Castle.Core" Version="5.1.1" />
     <PackageReference Include="DotNetSeleniumExtras.PageObjects" Version="3.11.0" />
     <PackageReference Include="DotNetSeleniumExtras.PageObjects.Core" Version="4.3.0" />
@@ -44,9 +54,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\HomePage\Components\ManageListings\" />
     <Folder Include="Pages\HomePage\Components\ManageRequests\" />
     <Folder Include="Pages\HomePage\Components\Dashboard\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="office">
+      <HintPath>..\..\..\..\..\..\Windows\assembly\GAC_MSIL\office\15.0.0.0__71E9BCE111E9429C\OFFICE.DLL</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
