@@ -28,9 +28,9 @@ namespace MarsAdvancedTask.ComponentsProfilePage
         private IWebElement checkStatus => marsDriver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[5]"));
         private IWebElement actualStatus => marsDriver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[5]"));
         private IWebElement manageReqDecline => marsDriver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[8]/button[2]"));
-                                                                                //*[@id="received-request-section"]/div[2]/div[1]/table/tbody/tr[1]/td[8]/button[2]
+                                                                               
         private IWebElement actualDecline => marsDriver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[5]"));
-        //*[@id="received-request-section"]/div[2]/div[1]/table/tbody/tr[2]/td[5]
+        
 
         public void receiveReqAccept()
         {
@@ -60,7 +60,7 @@ namespace MarsAdvancedTask.ComponentsProfilePage
                 MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[2]/td[8]/button[1]");
                 Thread.Sleep(1000);
                acceptReqTab.Click();
-                //*[@id="received-request-section"]/div[2]/div[1]/table/tbody/tr[1]/td[5]
+               
                 Thread.Sleep(1000);
                 Assert.That(actualStatus.Text== "Accepted","Actual result and expected result so not match");
             }
@@ -75,7 +75,7 @@ namespace MarsAdvancedTask.ComponentsProfilePage
             string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\manageRequest_Data.json");
             List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
             User user = users.ElementAt(0);
-            // profileSkill skills = user.skills.ElementAt(0);
+           
             //Do login
             Thread.Sleep(1000);
             signInButton.Click();

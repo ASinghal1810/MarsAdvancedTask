@@ -154,8 +154,8 @@ namespace MarsAdvancedTask.ComponentsProfilePage
             skillsEditButton.Click();
             addSkillEditText.Clear();
             addSkillEditText.SendKeys(user.SkillUpdate.Addskill);
-//            MarsWait.MarsWaitToBeVisible("XPath", 10, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[2]/tr/td/div/div[2]/select");
-Thread.Sleep(1000);
+            MarsWait.MarsWaitToBeVisible("XPath", 10, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[last()]/tr/td/div/div[2]/select");
+            Thread.Sleep(1000);
             skillLevelEdit.SendKeys(user.SkillUpdate.Chooselevel);
 
             Thread.Sleep(1000);
