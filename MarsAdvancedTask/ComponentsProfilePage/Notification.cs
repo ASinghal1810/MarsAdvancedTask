@@ -51,7 +51,7 @@ namespace MarsAdvancedTask.ComponentsProfilePage
             MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"account-profile-section\"]/div/section[1]/div/a[1]");
             Thread.Sleep(1000);
             dashboardTab.Click();
-           // Console.WriteLine(actualloadMore.Size);
+          
 
             //Click on load more
             MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[2]/span/span/div/div[6]/div/center/a");

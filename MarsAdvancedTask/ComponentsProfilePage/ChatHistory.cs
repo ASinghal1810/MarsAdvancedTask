@@ -41,7 +41,7 @@ namespace MarsAdvancedTask.ComponentsProfilePage
             rememberMe.Click();
             loginButton.Click();
 
-            //*[@id="account-profile-section"]/div/div[1]/div[1]/input
+           
             MarsWait.MarsWaitToBeClickable("XPath", 10, " //*[@id=\"account-profile-section\"]/div/div[1]/div[1]/input");
             Thread.Sleep(1000);
             searchTab.SendKeys(user.SearchSkill.EnterSkill);
