@@ -1,0 +1,38 @@
+[
+  {
+    "Username": "jeelpatel508@gmail.com",
+    "Password": "Zalak9407",
+    "skill": {
+      "Addskill": "learning",
+      "Chooselevel": "Beginner"
+    }
+
+  },
+  {
+    "Username": "jeelpatel508@gmail.com",
+    "Password": "Zalak9407",
+    "skill": {
+      "Addskill": "learning",
+      "Chooselevel": "Beginner"
+    }
+
+  },
+  {
+    "Username": "jeelpatel508@gmail.com",
+    "Password": "Zalak9407",
+    "skillUpdate": {
+      "Addskill": "Reading",
+      "Chooselevel": "Intermediate"
+    }
+  },
+  {
+    "Username": "jeelpatel508@gmail.com",
+    "Password": "Zalak9407",
+    "sameSkillUpdate": {
+      "Addskill": "Reading",
+      "Chooselevel": "Intermediate"
+    }
+  }
+ 
+
+]
