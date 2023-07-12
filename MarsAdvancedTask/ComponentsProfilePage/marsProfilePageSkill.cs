@@ -48,7 +48,7 @@ namespace MarsAdvancedTask.ComponentsProfilePage
             string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\skillData.json");
             List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
             User user = users.ElementAt(0);
-            // profileSkill skills = user.skills.ElementAt(0);
+           
             //Do login
             Thread.Sleep(1000);
             signInButton.Click();
@@ -63,10 +63,10 @@ namespace MarsAdvancedTask.ComponentsProfilePage
 
 
             MarsWait.MarsWaitToBeVisible("XPath", 20, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/thead/tr/th[3]/div");
-            // marsDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            
             Thread.Sleep(1000);
             MarsProfilePageSkillsAddNewButton.Click();
-            // profileSkill skills = user.skills.ElementAt(0);
+           
             Thread.Sleep(1000);
 
             MarsProfilePagSkillsAddSkill.SendKeys(user.Skill.Addskill);
@@ -75,7 +75,7 @@ namespace MarsAdvancedTask.ComponentsProfilePage
             Thread.Sleep(1000);
             MarsProfilePageSkillsAddButton.Click();
             Thread.Sleep(1000);
-//            MarsWait.MarsWaitToBeVisible("XPath", 10, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[2]/tr/td[1]");
+
 
             if (actualSkillAdd.Text == "learning")
             {
@@ -91,7 +91,7 @@ namespace MarsAdvancedTask.ComponentsProfilePage
             string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\skillData.json");
             List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
             User user = users.ElementAt(1);
-            // profileSkill skills = user.skills.ElementAt(0);
+            
             //Do login
             Thread.Sleep(1000);
             signInButton.Click();
@@ -106,10 +106,10 @@ namespace MarsAdvancedTask.ComponentsProfilePage
 
 
             MarsWait.MarsWaitToBeVisible("XPath", 20, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/thead/tr/th[3]/div");
-            // marsDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            
             Thread.Sleep(1000);
             MarsProfilePageSkillsAddNewButton.Click();
-            // profileSkill skills = user.skills.ElementAt(0);
+          
             Thread.Sleep(1000);
 
             MarsProfilePagSkillsAddSkill.SendKeys(user.Skill.Addskill);
@@ -118,10 +118,7 @@ namespace MarsAdvancedTask.ComponentsProfilePage
             Thread.Sleep(1000);
             MarsProfilePageSkillsAddButton.Click();
             Thread.Sleep(1000);
-            // Console.WriteLine(confirmationSameSkill.Text);
-
-            //MarsWait.MarsWaitToBeVisible("XPath", 10, " //*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/span/input[1]");
-            //Thread.Sleep(1000);
+           
             if (confirmationSameSkill.Text == "Beginner")
             {
                 Console.WriteLine("Pass duplicate skill or skill already exist");
@@ -153,7 +150,7 @@ namespace MarsAdvancedTask.ComponentsProfilePage
             //click on pen button to edit
 
             Thread.Sleep(2000);
-         //   MarsWait.MarsWaitToBeVisible("XPath", 10, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[3]/tr/td[3]/span[1]/i");
+         
             skillsEditButton.Click();
             addSkillEditText.Clear();
             addSkillEditText.SendKeys(user.SkillUpdate.Addskill);
@@ -196,7 +193,7 @@ namespace MarsAdvancedTask.ComponentsProfilePage
             //click on pen button to edit
 
             Thread.Sleep(2000);
-            //   MarsWait.MarsWaitToBeVisible("XPath", 10, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[3]/tr/td[3]/span[1]/i");
+
             skillsEditButton.Click();
             addSkillEditText.Clear();
             addSkillEditText.SendKeys(user.SameSkillUpdate.Addskill);
@@ -238,7 +235,7 @@ namespace MarsAdvancedTask.ComponentsProfilePage
             //click on pen button to edit
 
             Thread.Sleep(2000);
-            //   MarsWait.MarsWaitToBeVisible("XPath", 10, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[3]/tr/td[3]/span[1]/i");
+           
             skillsEditButton.Click();
             Thread.Sleep(2000);
             noEditCancel.Click();
