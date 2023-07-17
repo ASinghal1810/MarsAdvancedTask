@@ -2,6 +2,10 @@
   {
     "emailAddress": "eddie510@gmail.com",
     "password": "eddie123",
+    "userName": "Eddie He",
+    "listingTitleName": "Jazz Club",
+    "notificationMessage": "Notification updated",
+    "userDetailsUpdateMessage": "Availability updated",
     "languages": [
       { "language": "English" },
       { "language": "Chinese" },
@@ -16,7 +20,7 @@
           { "tag": "Jazz" },
           { "tag": "LiveHouse" }
         ],
-        "startDate": "30/06/2023",
+        "startDate": "30/07/2023",
         "endDate": "20/12/2023",
         "startTime": "9:00",
         "endTime": "12:00",
@@ -49,6 +53,10 @@
     "searchSkills": [
       { "skill": "Music" },
       { "skill": "Fun" }
+    ],
+    "typeOfLocation": [
+      { "Type": "Online" },
+      {"Type":  "On-Site"}
     ]
   }
 ]

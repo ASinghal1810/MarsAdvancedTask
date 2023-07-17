@@ -37,22 +37,14 @@ namespace MarsAdvancedTask.Components.ShareSkillComponents
         private IWebElement workSamples => marsDriver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[9]/div/div[2]/section/div/label/div/span/i"));
         private IWebElement saveButton => marsDriver.FindElement(By.XPath("//input[@class=\"ui teal button\"]"));
 
-        public void ShareSkillAction()
+        public void ShareSkillAction(string title, string description, string skillTag1, string skillTag2, string listingStartDate, string listingEndDate, string listingStartTime, string listingEndTime, string skillExchangeTag1)
         {
-            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData\TestUser1.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(0);
-           
-            SkillListing skillListing1 = user.skillListings.ElementAt(0);
-            ShareSkillTag shareSkillTag1 = skillListing1.tags.ElementAt(0);
-            ShareSkillExchangeTag skillExchangeTag1 = skillListing1.skillExchangeTags.ElementAt(0);
-
             MarsWait.MarsWaitToBeVisible("Name", 5, "title");
             // Identify the Title textbox and enter vaild title
-            titleTextBox.SendKeys(skillListing1.title);
+            titleTextBox.SendKeys(title);
 
             // Identify the Description textarea and enter description
-            descriptionTextArea.SendKeys(skillListing1.description);
+            descriptionTextArea.SendKeys(description);
 
             // Identify the Category dropdown list and select Music & Audio
             categoryDropdownList.Click();
@@ -64,22 +56,25 @@ namespace MarsAdvancedTask.Components.ShareSkillComponents
             voiceOverOption.Click();
 
             // Identify the Tgas input a tag
-            firstTagsTextBox.SendKeys(shareSkillTag1.tag);
+            firstTagsTextBox.SendKeys(skillTag1);
             firstTagsTextBox.SendKeys(Keys.Enter);
+            secondTagsTextBox.SendKeys(skillTag2);
+            secondTagsTextBox.SendKeys(Keys.Enter);
+
 
             // Identify the Start date and End date then input value
-            startDate.SendKeys(skillListing1.startDate);
-            endDate.SendKeys(skillListing1.endDate);
+            startDate.SendKeys(listingStartDate);
+            endDate.SendKeys(listingEndDate);
 
             // Identify the Monday checkbox and click on it
             mondayOption.Click();
 
             // Identify the Monday start time box and end time box then input value
-            startTime.SendKeys(skillListing1.startTime);
-            endTime.SendKeys(skillListing1.endTime);
+            startTime.SendKeys(listingStartTime);
+            endTime.SendKeys(listingEndTime);
 
             // Identify the Skill-Exchange and input a tag
-            skillExchangeTagTextBox.SendKeys(skillExchangeTag1.skillExchangeTag);
+            skillExchangeTagTextBox.SendKeys(skillExchangeTag1);
             skillExchangeTagTextBox.SendKeys(Keys.Enter);
 
             // Identify the Work Samples and click the plus button to upload photo

@@ -20,7 +20,7 @@ namespace MarsAdvancedTask.Components.NotificationComponents
 
 
 
-        public void markFirstNotificationAsRead()
+        public void markFirstNotificationAsRead(string notificationMessage)
         {
             notificationDropDownList.Click();
 
@@ -32,7 +32,7 @@ namespace MarsAdvancedTask.Components.NotificationComponents
             markAsReadTag.Click();
 
             MarsWait.MarsWaitToBeVisible("XPath", 10, "/html/body/div[1]/div");
-            if(successfulMessage.Text == "Notification updated")
+            if(successfulMessage.Text == notificationMessage)
             {
                 Console.WriteLine("Pass");
             }

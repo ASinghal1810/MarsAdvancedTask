@@ -28,7 +28,7 @@ namespace MarsAdvancedTask.Components.ProfilePageComponents
         private IWebElement lessThanOption => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[4]/div/span/select/option[1]"));
         private IWebElement updateSuccessfullyMessage => marsDriver.FindElement(By.XPath("/html/body/div[1]/div"));
 
-        public void addUserDetails()
+        public void addUserDetails(string userDetailsUpdateMessage)
         {
             MarsWait.MarsWaitToBeClickable("XPath", 5, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span/i");
             // Identify Availablity and select Full time option
@@ -47,7 +47,7 @@ namespace MarsAdvancedTask.Components.ProfilePageComponents
             moreThanOption.Click();
 
             MarsWait.MarsWaitToBeVisible("XPath", 5, "/html/body/div[1]/div");
-            if (updateSuccessfullyMessage.Text == "Availability updated")
+            if (updateSuccessfullyMessage.Text == userDetailsUpdateMessage)
             {
                 Console.WriteLine("Pass");
             }
@@ -57,7 +57,7 @@ namespace MarsAdvancedTask.Components.ProfilePageComponents
             }
         }
 
-        public void editUserDetails()
+        public void editUserDetails(string userDetailsUpdateMessage)
         {
             MarsWait.MarsWaitToBeClickable("XPath", 5, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span/i");
             // Identify Availablity and select Part time option
@@ -76,7 +76,7 @@ namespace MarsAdvancedTask.Components.ProfilePageComponents
             lessThanOption.Click();
 
             MarsWait.MarsWaitToBeVisible("XPath", 5, "/html/body/div[1]/div");
-            if (updateSuccessfullyMessage.Text == "Availability updated")
+            if (updateSuccessfullyMessage.Text == userDetailsUpdateMessage)
             {
                 Console.WriteLine("Pass");
             }

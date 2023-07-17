@@ -11,10 +11,16 @@ namespace MarsAdvancedTask.Components.LoginPageComponents
     {
         public string emailAddress { get; set; }
         public string password { get; set; }
+        public string userName { get; set; }
+        public string errorMessage { get; set; }
+        public string listingTitleName { get; set; }
+        public string notificationMessage { get; set; }
+        public string userDetailsUpdateMessage { get; set; }
         public List<ProfileDescription> descriptions { get; set; }
         public List<ProfileLanguage> languages { get; set; }
         public List<ProfileSearchSkills> searchSkills { get; set; }
         public List<SkillListing> skillListings { get; set; }
+        public List<ProfileLocationType> skillType { get; set; }
         
     }
     public class SkillListing
@@ -42,6 +48,10 @@ namespace MarsAdvancedTask.Components.LoginPageComponents
     {
         public string skill { get; set; }
 
+    }
+    public class ProfileLocationType
+    {
+        public string skillType { get; set; }
     }
 
     public class ShareSkillTag

@@ -40,20 +40,14 @@ namespace MarsAdvancedTask.Components.ProfilePageComponents
         }
 
 
-        public void marsProfileLanguageAdd()
+        public void marsProfileLanguageAdd(string firstLanguage, string secondLanguage)
         {
-            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData\TestUser1.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(0);
-            ProfileLanguage language1 = user.languages.ElementAt(0);
-            ProfileLanguage language2 = user.languages.ElementAt(1);
-
             // Identify the Add New button and click on it
             MarsWait.MarsWaitToBeClickable("XPath", 5, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div");
             languagesAddNewButton.Click();
 
             // Add first language (English)
-            languageTextBox.SendKeys(language1.language);
+            languageTextBox.SendKeys(firstLanguage);
             languageLevel.Click();
             basicOption.Click();
             languageAddButton.Click();
@@ -62,7 +56,7 @@ namespace MarsAdvancedTask.Components.ProfilePageComponents
             // Add second language (Chinese)
             MarsWait.MarsWaitToBeClickable("XPath", 5, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div");
             languagesAddNewButton.Click();
-            languageTextBox.SendKeys(language2.language);
+            languageTextBox.SendKeys(secondLanguage);
             languageLevel.Click();
             fluentOption.Click();
 
@@ -70,19 +64,12 @@ namespace MarsAdvancedTask.Components.ProfilePageComponents
             languageAddButton.Click();
         }
 
-        public void marsProfileLanguageEdit()
+        public void marsProfileLanguageEdit(string firstLanguage, string secondLanguage)
         {
-            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData\TestUser1.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(0);
-
-            ProfileLanguage language3 = user.languages.ElementAt(2);
-            ProfileLanguage language4 = user.languages.ElementAt(3);
-
             // Edited first language (Japanese)
             firstLanguagePenIcon.Click();
             languageTextBox.Clear();
-            languageTextBox.SendKeys(language3.language);
+            languageTextBox.SendKeys(firstLanguage);
             languageLevel.Click();
             nativeOption.Click();
             languageUpdateButton.Click();
@@ -91,7 +78,7 @@ namespace MarsAdvancedTask.Components.ProfilePageComponents
             MarsWait.MarsWaitToBeClickable("XPath", 5, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td[3]/span[1]/i");
             secondLanguagePenIcon.Click();
             languageTextBox.Clear();
-            languageTextBox.SendKeys(language4.language);
+            languageTextBox.SendKeys(secondLanguage);
             languageLevel.Click();
             conversationalOption.Click();
             languageUpdateButton.Click();

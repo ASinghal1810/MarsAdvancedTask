@@ -1,6 +1,7 @@
 ﻿[
   {
     "emailAddress": " ",
-    "password": ""
+    "password": "",
+    "errorMessage": "Password must be at least 6 characters"
   }
 ]

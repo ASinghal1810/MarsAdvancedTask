@@ -1,6 +1,7 @@
 ﻿[
   {
     "emailAddress": "eddie510@gmail.com",
-    "password": ""
+    "password": "",
+    "errorMessage": "Password must be at least 6 characters"
   }
 ]

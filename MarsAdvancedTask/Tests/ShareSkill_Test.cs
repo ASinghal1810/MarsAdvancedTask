@@ -16,7 +16,7 @@ namespace MarsAdvancedTask.Tests
     [Parallelizable]
     public class ShareSkill_Test : MarsDriver
     {
-        MarsLoginPage loginPage = new MarsLoginPage();
+        Login_Test login = new Login_Test();
         MarsManageListingPage manageListingPage = new MarsManageListingPage();
         MarsProfilePage profilePage = new MarsProfilePage();
         MarsShareSkills shareSkill = new MarsShareSkills();
@@ -24,14 +24,14 @@ namespace MarsAdvancedTask.Tests
         [Test, Order(1)]
         public void createSkillListing()
         {
-            loginPage.loginSuccessfully("Login with valid credentials");
+            login.loginSuccessfully();
             profilePage.createNewListing("New listing has been created!");
         }
 
         [Test, Order(2)]
         public void deleteSkillListing()
         {
-            loginPage.loginSuccessfully("Login with valid credentials");
+            login.loginSuccessfully();
             manageListingPage.deleteListing("Title Jazz Club Listing has been deleted!");
         }
     }

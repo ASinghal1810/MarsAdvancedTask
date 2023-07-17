@@ -1,5 +1,8 @@
-﻿using MarsAdvancedTask.Driver;
+﻿using MarsAdvancedTask.Components.LoginPageComponents;
+using MarsAdvancedTask.Components.NotificationComponents;
+using MarsAdvancedTask.Driver;
 using MarsAdvancedTask.Pages;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -13,14 +16,18 @@ namespace MarsAdvancedTask.Tests
     [Parallelizable]
     public class Notification_Test : MarsDriver
     {
-        MarsLoginPage loginPage = new MarsLoginPage();
-        MarsProfilePage profilePage = new MarsProfilePage();
+        Login_Test login = new Login_Test();
+        MarsNotification notification = new MarsNotification();
 
         [Test]
         public void markNotificationAsRead()
         {
-            loginPage.loginSuccessfully("Login Successfully!");
-            profilePage.notificationMarkAsRead("First Notification has been marked as read!");
+            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData\TestUser1.json");
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+            User user = users.ElementAt(0);
+
+            login.loginSuccessfully();
+            notification.markFirstNotificationAsRead(user.notificationMessage);
         }
 
     }

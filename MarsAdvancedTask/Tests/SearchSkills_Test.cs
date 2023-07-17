@@ -13,20 +13,20 @@ namespace MarsAdvancedTask.Tests
     [Parallelizable]
     public class SearchSkills_Test : MarsDriver
     {
-        MarsLoginPage loginPage = new MarsLoginPage();
+        Login_Test login = new Login_Test();
         MarsHomePage homePage = new MarsHomePage();
 
         [Test, Order(1)]
         public void searchSkillOnlineOption()
         {
-            loginPage.loginSuccessfully("Login with valid credentials");
+            login.loginSuccessfully();
             homePage.searchSkillByUsingOnlineOption("Search Skill by using Filter Online Option!");
         }
 
         [Test, Order(2)]
         public void searchSkillOnSiteOption()
         {
-            loginPage.loginSuccessfully("Login with valid credentials");
+            login.loginSuccessfully();
             homePage.searchSkillByUsingOnSiteOption("Search Skill by using Filter On-Site Option!");
         }
 

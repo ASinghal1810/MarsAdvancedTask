@@ -30,14 +30,9 @@ namespace MarsAdvancedTask.Components.SearchSkillsComponents
             marsLogo.Click();
         }
 
-        public void searchByOnlineOption()
+        public void searchByOnlineOption(string skill, string typeOfLocation)
         {
-            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData\TestUser1.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(0);
-            ProfileSearchSkills searchSkills = user.searchSkills.ElementAt(0);
-
-            searchBarTextBox.SendKeys(searchSkills.skill);
+            searchBarTextBox.SendKeys(skill);
             searchButton.Click();
 
             MarsWait.MarsWaitToBeClickable("XPath", 5, "//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[1]/div[5]/button[1]");
@@ -47,7 +42,7 @@ namespace MarsAdvancedTask.Components.SearchSkillsComponents
             firstSkill.Click();
 
             MarsWait.MarsWaitToBeVisible("XPath", 5, "//*[@id=\"service-detail-section\"]/div[2]/div/div[2]/div[1]/div[1]/div[2]/div[2]/div/div/div[3]/div/div[3]/div/div[2]");
-            if(locationType.Text == "Online")
+            if(locationType.Text == typeOfLocation)
             {
                 Console.WriteLine("Pass");
             }
@@ -57,14 +52,9 @@ namespace MarsAdvancedTask.Components.SearchSkillsComponents
             }
         }
 
-        public void searchByOnsiteOption()
+        public void searchByOnsiteOption(string skillName, string typeOfLocation)
         {
-            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData\TestUser1.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(0);
-            ProfileSearchSkills searchSkills = user.searchSkills.ElementAt(1);
-
-            searchBarTextBox.SendKeys(searchSkills.skill);
+            searchBarTextBox.SendKeys(skillName);
             searchButton.Click();
 
             MarsWait.MarsWaitToBeClickable("XPath", 5, "//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[1]/div[5]/button[2]");
@@ -74,7 +64,7 @@ namespace MarsAdvancedTask.Components.SearchSkillsComponents
             firstSkill.Click();
 
             MarsWait.MarsWaitToBeVisible("XPath", 5, "//*[@id=\"service-detail-section\"]/div[2]/div/div[2]/div[1]/div[1]/div[2]/div[2]/div/div/div[3]/div/div[3]/div/div[2]");
-            if (locationType.Text == "On-Site")
+            if (locationType.Text == typeOfLocation)
             {
                 Console.WriteLine("Pass");
             }
