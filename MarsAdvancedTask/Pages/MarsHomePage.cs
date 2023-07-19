@@ -15,32 +15,12 @@ namespace MarsAdvancedTask.Pages
 { 
     public class MarsHomePage : MarsDriver
     {
-       MarsSearchSkills searchSkillsPage = new MarsSearchSkills();
+        private IWebElement marsLogo => marsDriver.FindElement(By.XPath("//a[@href=\"/\"]"));
 
-        public void searchSkillByUsingOnlineOption(string name)
+        public void goToHomePage()
         {
-            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData\TestUser1.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(0);
-            ProfileSearchSkills searchSkills = user.searchSkills.ElementAt(0);
-            ProfileLocationType locationType = user.skillType.ElementAt(0);
-
-            MarsExtentReporting.MarsExtentReportingLogInfo(name);
-            searchSkillsPage.goToHomePage();
-            searchSkillsPage.searchByOnlineOption(searchSkills.skill, locationType.skillType);
-        }
-
-        public void searchSkillByUsingOnSiteOption(string name)
-        {
-            string dataPath = File.ReadAllText(@"G:\AdvancedTask\AdvancedTask(Eddie)\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData\TestUser1.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(0);
-            ProfileSearchSkills searchSkills = user.searchSkills.ElementAt(1);
-            ProfileLocationType locationType = user.skillType.ElementAt(1);
-
-            MarsExtentReporting.MarsExtentReportingLogInfo(name);
-            searchSkillsPage.goToHomePage();
-            searchSkillsPage.searchByOnsiteOption(searchSkills.skill, locationType.skillType);
+            MarsWait.MarsWaitToBeClickable("XPath", 5, "//a[@href=\"/\"]");
+            marsLogo.Click();
         }
     }
 }

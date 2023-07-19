@@ -14,7 +14,6 @@ namespace MarsAdvancedTask.Components.SearchSkillsComponents
 {
     public class MarsSearchSkills : MarsDriver
     {
-        private IWebElement marsLogo => marsDriver.FindElement(By.XPath("//a[@href=\"/\"]"));
         private IWebElement searchBarTextBox => marsDriver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[3]/div/input"));
         private IWebElement searchButton => marsDriver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[3]/div/button"));
         private IWebElement filterOnlineOption => marsDriver.FindElement(By.XPath("//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[1]/div[5]/button[1]"));
@@ -22,13 +21,6 @@ namespace MarsAdvancedTask.Components.SearchSkillsComponents
         private IWebElement filterShowAllOption => marsDriver.FindElement(By.XPath("//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[1]/div[5]/button[3]"));
         private IWebElement firstSkill => marsDriver.FindElement(By.XPath("//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[2]/div/div[2]/div/div/div[1]/a/img"));
         private IWebElement locationType => marsDriver.FindElement(By.XPath("//*[@id=\"service-detail-section\"]/div[2]/div/div[2]/div[1]/div[1]/div[2]/div[2]/div/div/div[3]/div/div[3]/div/div[2]"));
-
-
-        public void goToHomePage()
-        {
-            MarsWait.MarsWaitToBeClickable("XPath", 5, "//a[@href=\"/\"]");
-            marsLogo.Click();
-        }
 
         public void searchByOnlineOption(string skill, string typeOfLocation)
         {

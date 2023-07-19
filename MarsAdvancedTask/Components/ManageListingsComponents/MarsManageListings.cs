@@ -12,7 +12,6 @@ namespace MarsAdvancedTask.Components.ManageListingsComponents
 {
     public class MarsManageListings : MarsDriver
     {
-        private IWebElement manageListingsTag => marsDriver.FindElement(By.XPath("//*[@href=\"/Home/ListingManagement\"]"));
         private IWebElement titleName => marsDriver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[3]"));
         private IWebElement deleteFirstListing => marsDriver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]"));
         private IWebElement deleteYesOption => marsDriver.FindElement(By.XPath("/html/body/div[2]/div/div[3]/button[2]"));
@@ -21,8 +20,6 @@ namespace MarsAdvancedTask.Components.ManageListingsComponents
 
         public void marsDeleteListing(string listingTitleName)
         {
-            manageListingsTag.Click();
-
             MarsWait.MarsWaitToBeVisible("XPath", 10, "//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[3]");
             if(titleName.Text == listingTitleName)
             {
