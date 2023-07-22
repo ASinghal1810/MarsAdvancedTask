@@ -10,7 +10,7 @@ using OpenQA.Selenium;
 
 namespace MarsAdvancedTask.Pages.MasterPage.Login
 {
-    public class LoginAssertion : MarsDriver
+    public class ProfileAssertion : MarsDriver
     {
         private static IWebElement logoutText => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/a[2]/button"));
         private static string notificationXPath => "/html/body/div[1]";

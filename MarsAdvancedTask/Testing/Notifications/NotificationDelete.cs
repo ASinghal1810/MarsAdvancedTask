@@ -9,6 +9,7 @@ using OpenQA.Selenium;
 using MarsAdvancedTask.Pages.HomePage.Components.Profile.ComponentsProfilePage.Certification;
 using MarsAdvancedTask.Pages.HomePage;
 using MarsAdvancedTask.Pages.HomePage.Components.ManageListings;
+using System.Runtime.ConstrainedExecution;
 
 namespace MarsAdvancedTask
 {
@@ -24,8 +25,8 @@ namespace MarsAdvancedTask
 
         Notification notify => new Notification();
         LoginMethods lMObj => new LoginMethods();
-        
 
+        
 
         [Test, Order(1), Description("Manage Listings --> Edit ")]
         public void notificationDelete()
@@ -36,6 +37,7 @@ namespace MarsAdvancedTask
             Thread.Sleep(2000);
             mhpg.manageDashboardComponentButton();
             notify.marsNotificationDelete();
+            
 
         }
 

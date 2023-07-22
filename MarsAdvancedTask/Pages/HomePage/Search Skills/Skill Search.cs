@@ -17,8 +17,10 @@ namespace MarsAdvancedTask.Pages.HomePage.Search_Skills
         private IWebElement marsLogo => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/a"));
         private IWebElement programmingAndTech => marsDriver.FindElement(By.XPath("//*[@id=\"home\"]/div/section[1]/div/div[2]/div/div[2]/div[2]/a/img"));
         private IWebElement dataAnalysisAndReports => marsDriver.FindElement(By.XPath("//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[1]/div[1]/div/a[10]"));
-        private IWebElement skillSelect => marsDriver.FindElement(By.XPath("//*[@id=\"service-search-section\"]/div[3]/div/section/div/div[2]/div/div[2]/div/div/div[1]/div[1]/a[2]/p"));
-        
+        private IWebElement skillSelect => marsDriver.FindElement(By.XPath("//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[2]/div/div[2]/div/div/div[1]/div[1]/a[2]/p"));
+
+        private IWebElement skillFound => marsDriver.FindElement(By.XPath("//*[@id=\"service-detail-section\"]/div[2]/div/div[2]/div[1]/div[1]/div[2]/h1/span"));
+
         public void skillToSearch(string skill, string category, string subCategory)
         {
             string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\SearchSkill.json");
@@ -33,10 +35,16 @@ namespace MarsAdvancedTask.Pages.HomePage.Search_Skills
                 {
                     MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[1]/div[1]/div/a[10]");
                     dataAnalysisAndReports.Click();
-                    if (sSkill.Skill==skill)
+                    MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[2]/div/div[2]/div/div/div[1]/div[1]/a[2]/p");
+                    skillSelect.Click();
+                    if (sSkill.Skill==skillFound.Text.Trim())
                     {
-                        skillSelect.Click();
+                        
                         Console.WriteLine("Skill Found");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Skill Not Found");
                     }
                 }
             }

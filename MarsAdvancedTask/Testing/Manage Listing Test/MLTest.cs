@@ -24,16 +24,18 @@ namespace MarsAdvancedTask
 
         ManageListingEdit MLMethod = new ManageListingEdit();
         LoginMethods lMObj => new LoginMethods();
-        LoginAssertion lAObj => new LoginAssertion();
+        ProfileAssertion lAObj => new ProfileAssertion();
 
         MarsProfilePageCertificationsMethods certObj = new MarsProfilePageCertificationsMethods();
         private IWebElement xpathnew => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span/select"));
 
         ProfileMethods profileMethods => new ProfileMethods();
 
+        AssertNotify pa => new AssertNotify();
+
 
         [Test, Order(1), Description("Manage Listings --> Edit ")]
-        public void TestCaseAdd()
+        public void TestCase()
         {
             string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData.json");
             Users users = JsonConvert.DeserializeObject<Users>(dataJson);

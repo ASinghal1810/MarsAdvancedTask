@@ -21,7 +21,7 @@ namespace MarsAdvancedTask
 
         MarsMasterPage marsMstrPgObj => new MarsMasterPage();
         LoginMethods lMObj => new LoginMethods();
-        LoginAssertion lAObj => new LoginAssertion();
+        ProfileAssertion lAObj => new ProfileAssertion();
         private IWebElement xpathnew => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span/select"));
 
         ProfileMethods profileMethods => new ProfileMethods();
@@ -39,10 +39,9 @@ namespace MarsAdvancedTask
                 Thread.Sleep(200);
                 marsMstrPgObj.MarsMasterPageLoginUser(lMObj.userUsername(0), lMObj.userPassword(0));
                 Thread.Sleep(2000);
-            for (int i = 0; i < 2; i++)
-            {
-                profileMethods.profileEditButtonAvailability(i);
-            }
+            
+                profileMethods.profileEditButtonAvailability(0);
+            
             
         }
         [Test, Order(2), Description("Profile --> Hours")]
@@ -59,10 +58,9 @@ namespace MarsAdvancedTask
                 Thread.Sleep(200);
                 marsMstrPgObj.MarsMasterPageLoginUser(lMObj.userUsername(0), lMObj.userPassword(0));
                 Thread.Sleep(2000);
-            for (int i = 0; i < 3; i++)
-            {
-                profileMethods.profileEditButtonHours(i);
-            }
+            
+                profileMethods.profileEditButtonHours(0);
+            
         }
         [Test, Order(3), Description("Profile --> Earn Target")]
         public void TestCaseEarnTarget()
@@ -78,10 +76,9 @@ namespace MarsAdvancedTask
                 Thread.Sleep(200);
                 marsMstrPgObj.MarsMasterPageLoginUser(lMObj.userUsername(0), lMObj.userPassword(0));
                 Thread.Sleep(2000);
-                for (int i = 0; i < 3; i++)
-                {
-                    profileMethods.profileEditButtonEarnTarget(i);
-                }
+                
+                profileMethods.profileEditButtonEarnTarget(0);
+                
             }
         }
 

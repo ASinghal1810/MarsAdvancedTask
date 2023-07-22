@@ -16,7 +16,7 @@ namespace MarsAdvancedTask
 
         MarsMasterPage marsMstrPgObj => new MarsMasterPage();
         LoginMethods lMObj=> new LoginMethods();
-        LoginAssertion lAObj=> new LoginAssertion();
+        ProfileAssertion lAObj=> new ProfileAssertion();
      
         [Test, Order(1),Description("Sign In")]
         public void TestCaseOne()
@@ -37,24 +37,7 @@ namespace MarsAdvancedTask
                 lAObj.assertLogin(i);
             }
         }
-        [Test, Order(2), Description("Profile --> Loc, Availability, Hours, Earn Target")]
-        public void TestCaseTwo()
-        {
-            string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData.json");
-            Users users = JsonConvert.DeserializeObject<Users>(dataJson);
-            
-                User user = users.users.ElementAt(0);
-
-                Thread.Sleep(200);
-                marsMstrPgObj.MarsMasterPageNavigateToSignInForm();
-
-                Thread.Sleep(200);
-                marsMstrPgObj.MarsMasterPageLoginUser(lMObj.userUsername(0), lMObj.userPassword(0));
-
-                
-
-            
-        }
+        
     }
 }
 

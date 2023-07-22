@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using OpenQA.Selenium;
 using SeleniumExtras;
 using OpenQA.Selenium.Support.UI;
+using System.Drawing;
 
 namespace MarsAdvancedTask.Pages.HomePage.Components.Profile
 {
@@ -19,9 +20,9 @@ namespace MarsAdvancedTask.Pages.HomePage.Components.Profile
         private IWebElement availability => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span/i"));
         private IWebElement hours => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[3]/div/span/i"));
         private IWebElement earnTarget => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[4]/div/span/i"));
+        AssertNotify pa => new AssertNotify();
 
-
-        public void profileEditButtonLoc(int i)
+        public void profileEditButtonLoc()
         {
 
                 location.Click();
@@ -38,7 +39,17 @@ namespace MarsAdvancedTask.Pages.HomePage.Components.Profile
                 Profile profile = profiles.profileAvailability.ElementAt(i);
                 SelectElement selavail = new SelectElement(marsDriver.FindElement(By.CssSelector("#account-profile-section > div > section:nth-child(3) > div > div > div > div.four.wide.column > div > div > div > div > div > div.extra.content > div > div:nth-child(2) > div > span > select")));
                 selavail.SelectByText(profile.Availability);
-                //return profile.Availability;
+           
+                if (pa.assertNotification().Trim() == "Availability updated")
+                {
+                    Console.WriteLine("Test Successful");
+                }
+                else
+                {
+                
+                Console.WriteLine("Test Not Successful and below message displayed");
+                Console.WriteLine(pa.assertNotification().Trim());
+                }
         }
         public void profileEditButtonHours(int i)
         {
@@ -49,7 +60,17 @@ namespace MarsAdvancedTask.Pages.HomePage.Components.Profile
                 Profile profile = profiles.profileHours.ElementAt(i);
                 SelectElement selhr = new SelectElement(marsDriver.FindElement(By.CssSelector("#account-profile-section > div > section:nth-child(3) > div > div > div > div.four.wide.column > div > div > div > div > div > div.extra.content > div > div:nth-child(3) > div > span > select")));
                 selhr.SelectByText(profile.Hours);
-            
+                if (pa.assertNotification().Trim() == "Availability updated")
+                {
+                    Console.WriteLine("Test Successful");
+                }
+
+                else
+                    {
+
+                        Console.WriteLine("Test Not Successful and below message displayed");
+                        Console.WriteLine(pa.assertNotification().Trim());
+                }
         }
         public void profileEditButtonEarnTarget(int i)
         {
@@ -60,7 +81,18 @@ namespace MarsAdvancedTask.Pages.HomePage.Components.Profile
                 Profile profile = profiles.profileEarnTarget.ElementAt(i);
                 SelectElement selET = new SelectElement(marsDriver.FindElement(By.CssSelector("#account-profile-section > div > section:nth-child(3) > div > div > div > div.four.wide.column > div > div > div > div > div > div.extra.content > div > div:nth-child(4) > div > span > select")));
                 selET.SelectByText(profile.EarnTarget);
-           
+                //pa.profileET();
+                if (pa.assertNotification().Trim() == "Availability updated")
+                {
+                    Console.WriteLine("Test Successful");
+                }
+                else
+                {
+
+                    Console.WriteLine("Test Not Successful and below message displayed");
+                    Console.WriteLine(pa.assertNotification().Trim());
+            }
+
         }
         
     }

@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Support.UI;
 using Newtonsoft.Json;
+using MarsAdvancedTask.Pages.MasterPage.Login;
+using NUnit.Framework;
+using System.Runtime.ConstrainedExecution;
 
 namespace MarsAdvancedTask.Pages.HomePage.Components.Profile.ComponentsProfilePage.Certification
 {
@@ -23,6 +26,7 @@ namespace MarsAdvancedTask.Pages.HomePage.Components.Profile.ComponentsProfilePa
         private IWebElement MarsProfilePageCertificationsTabEditButton => marsDriver.FindElement(By.XPath("//*/tbody/tr/td[4]/span[1]/i"));
         private IWebElement MarsProfilePageCertificationsTabUpdateButton => marsDriver.FindElement(By.XPath("//*[@value=\"Update\"]"));
         private IWebElement MarsProfilePageCertificationsTabDeleteButton => marsDriver.FindElement(By.XPath("//*/tbody/tr/td[4]/span[2]/i"));
+        AssertNotify pa => new AssertNotify();
 
         public void marsProfilePageCertificationsAddClick() 
         {
@@ -41,14 +45,27 @@ namespace MarsAdvancedTask.Pages.HomePage.Components.Profile.ComponentsProfilePa
                 try
                 {
                     Certification cert = certifications.certifications.ElementAt(i);
-                    Thread.Sleep(3000);
+                    Thread.Sleep(30);
                     MarsProfilePageCertificationsAddNewButton.Click();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(30);
                     MarsProfilePageCertificationsTabCertificateOrAward.SendKeys(cert.Certificate);
                     MarsProfilePageCertificationsTabCertificationFrom.SendKeys(cert.Institution);
                     MarsProfilePageCertificationsTabCertificationYear.SendKeys(cert.Year);
                     MarsProfilePageCertificationsTabAddButton.Click();
+                    string compNoti = cert.Certificate + " has been added to your certification";
+                    if (pa.assertNotification().Trim() == compNoti.Trim())
+                    {
+                        
+                        Console.WriteLine("Test "+i+" Successful");
+                    }
+                    else
+                    {
+                       
+                        Console.WriteLine("Test "+i+"  Not Successful and below message displayed");
+                        Console.WriteLine(pa.assertNotification().Trim());
+                    }
                 }
+                
 
                 catch (NoSuchElementException)
                 {
@@ -64,16 +81,28 @@ namespace MarsAdvancedTask.Pages.HomePage.Components.Profile.ComponentsProfilePa
                     {
                         Certification cert = certifications.certifications.ElementAt(0);
                         //cert.Certificate;
-                    Thread.Sleep(3000);
+                    Thread.Sleep(30);
                     MarsProfilePageCertificationsTabEditButton.Click();
-                    Thread.Sleep(3000);
+                    Thread.Sleep(30);
                     MarsProfilePageCertificationsTabCertificateOrAward.Clear();
                     MarsProfilePageCertificationsTabCertificateOrAward.SendKeys(cert.Certificate);
                     MarsProfilePageCertificationsTabCertificationFrom.Clear();
                     MarsProfilePageCertificationsTabCertificationFrom.SendKeys(cert.Institution);
                     MarsProfilePageCertificationsTabCertificationYear.SendKeys(cert.Year);
                     MarsProfilePageCertificationsTabUpdateButton.Click();
-                }
+
+                string compNoti = cert.Certificate + " has been updated to your certification";
+                if (pa.assertNotification().Trim() == compNoti.Trim())
+                    {
+                        Console.WriteLine("Test Successful");
+                    }
+                    else
+                    {
+
+                        Console.WriteLine("Test Not Successful and below message displayed");
+                        Console.WriteLine(pa.assertNotification().Trim());
+                    }
+                    }
 
                 catch (NoSuchElementException)
                 {
@@ -82,14 +111,29 @@ namespace MarsAdvancedTask.Pages.HomePage.Components.Profile.ComponentsProfilePa
         }
         public void marsProfilePageCertificationsDelete()
         {
-            
-                try
+            string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Certification.json");
+            Certifications certifications = JsonConvert.DeserializeObject<Certifications>(dataJson);
+
+            try
                 {
-                Thread.Sleep(3000);
+                Certification cert = certifications.certifications.ElementAt(0);
+                Thread.Sleep(30);
                 MarsProfilePageCertificationsTabDeleteButton.Click();
-                    Thread.Sleep(3000);
-                    
+                Thread.Sleep(30);
+
+                string compNoti = cert.Certificate + " has been deleted from your certification";
+                if (pa.assertNotification().Trim() == compNoti.Trim())
+                {
+                    Console.WriteLine("Test Successful");
                 }
+                else
+                {
+
+                    Console.WriteLine("Test Not Successful and below message displayed");
+                    Console.WriteLine(pa.assertNotification().Trim());
+                }
+
+            }
 
                 catch (NoSuchElementException)
                 {

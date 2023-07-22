@@ -18,12 +18,13 @@ namespace MarsAdvancedTask
 
         MarsMasterPage marsMstrPgObj => new MarsMasterPage();
         LoginMethods lMObj => new LoginMethods();
-        LoginAssertion lAObj => new LoginAssertion();
+        ProfileAssertion lAObj => new ProfileAssertion();
 
         MarsProfilePageCertificationsMethods certObj = new MarsProfilePageCertificationsMethods();
         private IWebElement xpathnew => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span/select"));
 
         ProfileMethods profileMethods => new ProfileMethods();
+
 
 
         [Test, Order(1), Description("Profile --> Certification Add")]
@@ -44,7 +45,7 @@ namespace MarsAdvancedTask
             
 
         }
-        [Test, Order(1), Description("Profile --> Certification Edit")]
+        [Test, Order(2), Description("Profile --> Certification Edit")]
         public void TestCaseEdit()
         {
             string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData.json");
@@ -62,7 +63,7 @@ namespace MarsAdvancedTask
 
 
         }
-        [Test, Order(1), Description("Profile --> Certification Delete")]
+        [Test, Order(3), Description("Profile --> Certification Delete")]
         public void TestCaseDelete()
         {
             string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData.json");

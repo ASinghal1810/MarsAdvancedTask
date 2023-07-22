@@ -6,6 +6,8 @@ using MarsAdvancedTask.Drivers;
 using AutoItX3Lib;
 using System.IO;
 using MarsAdvancedTask.Pages.MasterPage.Login;
+using TechTalk.SpecFlow.Assist;
+using System.Runtime.ConstrainedExecution;
 
 namespace MarsAdvancedTask.Pages.HomePage.Components.ManageListings
 {
@@ -60,10 +62,11 @@ namespace MarsAdvancedTask.Pages.HomePage.Components.ManageListings
         private IWebElement serviceTypeText => marsDriver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[5]"));
         private IWebElement tagRemoval => marsDriver.FindElement(By.XPath("//*[@class=\"ReactTags__tag\"]/a"));
         private IWebElement acceptOrDecline => marsDriver.FindElement(By.XPath("//*[@class=\"ui icon positive right labeled button\"]"));
+        AssertNotify pa => new AssertNotify();
         public void MLEdit(int i)
         {
 
-            Thread.Sleep(500);
+            Thread.Sleep(50);
             editListing.Click();
             string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\EditListing.json");
             ManageListings manageLists = JsonConvert.DeserializeObject<ManageListings>(dataJson);
@@ -74,32 +77,32 @@ namespace MarsAdvancedTask.Pages.HomePage.Components.ManageListings
             MarsWait.MarsWaitToBeClickable("Name", 10, "title");
             titleTextBox.Clear();
             titleTextBox.SendKeys(profile.Title);
-            Thread.Sleep(200);
+            Thread.Sleep(20);
 
             //Description
             MarsWait.MarsWaitToBeClickable("Name", 10, "description");
             descTestBox.Clear();
-            Thread.Sleep(200);
+            Thread.Sleep(20);
             descTestBox.SendKeys(profile.Description);
 
-            Thread.Sleep(200);
+            Thread.Sleep(20);
 
             //Category
             SelectElement categorySelect = new SelectElement(categoryDropDown);
             categorySelect.SelectByValue(profile.Category);
-            Thread.Sleep(200);
+            Thread.Sleep(20);
 
             //Sub Category
             MarsWait.MarsWaitToBeClickable("Name", 10, "categoryId");
             SelectElement subCategorySelect = new SelectElement(subCategoryDropDown);
             subCategorySelect.SelectByValue(profile.SubCategory);
-            Thread.Sleep(200);
+            Thread.Sleep(20);
 
             //Tags
             MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"service-listing-section\"]/div[2]/div/form/div[4]/div[2]/div/div/div/div/input");
             tagRemoval.Click();
             tags.SendKeys(profile.Tags + "\n");
-            Thread.Sleep(200);
+            Thread.Sleep(20);
 
             //Service Type Radio Button
             if (profile.ServiceType == "Hourly")
@@ -121,7 +124,7 @@ namespace MarsAdvancedTask.Pages.HomePage.Components.ManageListings
             {
                 locationTypeOnlineRB.Click();
             }
-            Thread.Sleep(200);
+            Thread.Sleep(20);
 
             //Start Date
             startDate.SendKeys(profile.StartDate);
@@ -158,21 +161,21 @@ namespace MarsAdvancedTask.Pages.HomePage.Components.ManageListings
                 credit.SendKeys(profile.Credit);
             }
 
-            Thread.Sleep(300);
+            Thread.Sleep(30);
             //Work Samples
             // Identify the Work Samples and click the plus button to upload photo
             //  Max file size is 2 MB and supported file types are gif / jpeg / png / jpg / doc(x) / pdf / txt / xls(x
-            Thread.Sleep(200);
+            MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"service-listing-section\"]/div[2]/div/form/div[9]/div/div[2]/section/div/label/div/span/i");
             workSamples.Click();
-            Thread.Sleep(200);
+            Thread.Sleep(2000);
             AutoItX3 autoIt = new AutoItX3();
             Thread.Sleep(500);
             autoIt.WinActivate("Open");
-            Thread.Sleep(200);
+            Thread.Sleep(2000);
             autoIt.Send(@"C:\Users\ankur\Desktop\project_Mars\download.png");
-            Thread.Sleep(500);
+            Thread.Sleep(2000);
             autoIt.Send("{ENTER}");
-            Thread.Sleep(200);
+            Thread.Sleep(2000);
 
 
 
@@ -189,6 +192,16 @@ namespace MarsAdvancedTask.Pages.HomePage.Components.ManageListings
             //SaveButton
             MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"service-listing-section\"]/div[2]/div/form/div[11]/div/input[1]");
             saveB.Click();
+            if (pa.assertNotification().Trim() == "Service Listing Updated successfully")
+            {
+                Console.WriteLine("Test Successful");
+            }
+            else
+            {
+
+                Console.WriteLine("Test Not Successful and below message displayed");
+                Console.WriteLine(pa.assertNotification().Trim());
+            }
 
         }
     }
