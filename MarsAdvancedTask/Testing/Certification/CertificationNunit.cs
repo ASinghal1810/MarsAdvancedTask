@@ -58,7 +58,7 @@ namespace MarsAdvancedTask
             Thread.Sleep(2000);
             certObj.marsProfilePageCertificationsAddClick();
 
-            certObj.marsProfilePageCertificationsAdd();
+            certObj.marsProfilePageCertificationsEdit();
 
 
         }
@@ -74,9 +74,9 @@ namespace MarsAdvancedTask
             Thread.Sleep(200);
             marsMstrPgObj.MarsMasterPageLoginUser(lMObj.userUsername(0), lMObj.userPassword(0));
             Thread.Sleep(2000);
-            certObj.marsProfilePageCertificationsAddClick();
 
-            certObj.marsProfilePageCertificationsAdd();
+            certObj.marsProfilePageCertificationsAddClick();
+            certObj.marsProfilePageCertificationsDelete();
 
 
         }

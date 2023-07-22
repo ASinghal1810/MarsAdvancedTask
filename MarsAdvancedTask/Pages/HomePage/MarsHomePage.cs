@@ -1,4 +1,5 @@
 ﻿using MarsAdvancedTask.Driver;
+using MarsAdvancedTask.Drivers;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -10,14 +11,20 @@ namespace MarsAdvancedTask.Pages.HomePage
 {
     public class MarsHomePage: MarsDriver
     {
-        private IWebElement manageListingComponent => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[4]/div/span/i"));
+        private IWebElement mListing => marsDriver.FindElement(By.XPath("//*[@class=\"ui eight item menu\"]/a[3]"));
+        private IWebElement dashboard => marsDriver.FindElement(By.XPath("//*[@class=\"ui eight item menu\"]/a[1]"));
 
 
         public void manageListingComponentButton()
         {
+            MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@class=\"ui eight item menu\"]/a[3]");
+            mListing.Click();
 
-            manageListingComponent.Click();
-
+        }
+        public void manageDashboardComponentButton() 
+        {
+            MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@class=\"ui eight item menu\"]/a[1]");
+            dashboard.Click();
         }
     }
 }

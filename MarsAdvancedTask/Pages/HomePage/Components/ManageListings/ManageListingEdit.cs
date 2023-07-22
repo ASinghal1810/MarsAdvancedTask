@@ -4,14 +4,16 @@ using OpenQA.Selenium.Support.UI;
 using Newtonsoft.Json;
 using MarsAdvancedTask.Drivers;
 using AutoItX3Lib;
+using System.IO;
+using MarsAdvancedTask.Pages.MasterPage.Login;
 
 namespace MarsAdvancedTask.Pages.HomePage.Components.ManageListings
 {
-    public class ManageListingMethods: MarsDriver
+    public class ManageListingEdit: MarsDriver
     {
-        
+        IfBlock ifBlockObj = new IfBlock();
 
-        private IWebElement editListing => marsDriver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[8]/div/button[2]"));
+        private IWebElement editListing => marsDriver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[8]/div/button[2]/i"));
         private IWebElement titleTextBox => marsDriver.FindElement(By.Name("title"));
         private IWebElement descTestBox => marsDriver.FindElement(By.Name("description"));
         private IWebElement categoryDropDown => marsDriver.FindElement(By.Name("categoryId"));
@@ -131,18 +133,18 @@ namespace MarsAdvancedTask.Pages.HomePage.Components.ManageListings
             }
 
             ////Sundat to Saturday Check Boxes
-            //ifBlockObj.DaysIfBlock(sunday, sundayST, sundayET, SsSunday, SsSundayST, SsSundayET);
-            //ifBlockObj.DaysIfBlock(monday, mondayST, mondayET, SsMonday, SsMondayST, SsMondayET);
-            //ifBlockObj.DaysIfBlock(tuesday, tuesdayST, tuesdayET, SsTuesday, SsTuesdayST, SsTuesdayET);
-            //ifBlockObj.DaysIfBlock(wednesday, wednesdayST, wednesdayET, SsWednesday, SsWednesdayST, SsWednesdayET);
-            //ifBlockObj.DaysIfBlock(thursday, thursdayST, thursdayET, SsThursday, SsThursdayST, SsThursdayET);
-            //ifBlockObj.DaysIfBlock(friday, fridayST, fridayET, SsFriday, SsFridayST, SsFridayET);
-            //ifBlockObj.DaysIfBlock(saturday, saturdayST, saturdayET, SsSaturday, SsSaturdayST, SsSaturdayET);
+            //ifBlockObj.DaysIfBlock(sunday, sundayST, sundayET, profile.Sun, profile.SunFrom, profile.SunTo);
+            //ifBlockObj.DaysIfBlock(monday, mondayST, mondayET, profile.Mon ,profile.MonFrom ,profile.MonTo);
+            //ifBlockObj.DaysIfBlock(tuesday, tuesdayST, tuesdayET, profile.Tue, profile.TueFrom, profile.TueTo);
+            //ifBlockObj.DaysIfBlock(wednesday, wednesdayST, wednesdayET, profile.Wed, profile.WedFrom, profile.WedTo);
+            //ifBlockObj.DaysIfBlock(thursday, thursdayST, thursdayET, profile.Thur, profile.ThurFrom, profile.ThurTo);
+            //ifBlockObj.DaysIfBlock(friday, fridayST, fridayET, profile.Fri, profile.FriFrom, profile.FriTo);
+            //ifBlockObj.DaysIfBlock(saturday, saturdayST, saturdayET, profile.Sat, profile.SatFrom, profile.SatTo);
 
             Thread.Sleep(200);
             //Wait.WaitToBeClickable(driver, "XPath", 5, "//div[5]//div[2]//div[1]//div[2]//div[1]//input[1]");
-            sTradeTypeRB.Click();
-            Thread.Sleep(200);
+            //sTradeTypeRB.Click();
+           
             //Credit Or Skill-Exchange
             if (profile.SkillTrade == "Skill-Exchange")
             {
@@ -163,15 +165,16 @@ namespace MarsAdvancedTask.Pages.HomePage.Components.ManageListings
             Thread.Sleep(200);
             workSamples.Click();
             Thread.Sleep(200);
-
             AutoItX3 autoIt = new AutoItX3();
             Thread.Sleep(500);
             autoIt.WinActivate("Open");
             Thread.Sleep(200);
-            autoIt.Send(profile.WorkSamples);
+            autoIt.Send(@"C:\Users\ankur\Desktop\project_Mars\download.png");
             Thread.Sleep(500);
             autoIt.Send("{ENTER}");
             Thread.Sleep(200);
+
+
 
             //Active/Deactive
             if (profile.Active == "Active")

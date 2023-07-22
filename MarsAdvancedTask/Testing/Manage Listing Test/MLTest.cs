@@ -15,13 +15,14 @@ namespace MarsAdvancedTask
     [TestFixture]
     [Parallelizable]
 
-    public class MLTest : MarsDriver
+    public class ManageListingTest: MarsDriver
     {
 
         MarsMasterPage marsMstrPgObj => new MarsMasterPage();
 
         MarsHomePage mhpg = new MarsHomePage();
-        ManageListingMethods MLMethod = new ManageListingMethods();
+
+        ManageListingEdit MLMethod = new ManageListingEdit();
         LoginMethods lMObj => new LoginMethods();
         LoginAssertion lAObj => new LoginAssertion();
 
@@ -31,7 +32,7 @@ namespace MarsAdvancedTask
         ProfileMethods profileMethods => new ProfileMethods();
 
 
-        [Test, Order(1), Description("Profile --> Certification Add")]
+        [Test, Order(1), Description("Manage Listings --> Edit ")]
         public void TestCaseAdd()
         {
             string dataJson = File.ReadAllText(@"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData.json");
@@ -44,6 +45,7 @@ namespace MarsAdvancedTask
             marsMstrPgObj.MarsMasterPageLoginUser(lMObj.userUsername(0), lMObj.userPassword(0));
             Thread.Sleep(2000);
             mhpg.manageListingComponentButton();
+            Thread.Sleep(2000);
             MLMethod.MLEdit(0);
             
             
