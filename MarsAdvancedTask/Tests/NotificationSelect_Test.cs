@@ -1,6 +1,8 @@
-﻿using MarsAdvancedTask.ComponentsProfilePage;
-using MarsAdvancedTask.Driver;
+﻿using MarsAdvancedTask.Driver;
 using MarsAdvancedTask.Drivers;
+using MarsAdvancedTask.Pages;
+using MarsAdvancedTask.Pages.Dashboard;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -17,23 +19,33 @@ namespace MarsAdvancedTask.Tests
         [Test, Order(1)]
         public void notifSelectUnselect()
         {
+            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\manageRequest_Data.json");
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+            User user = users.ElementAt(0);
+
             MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials and select 1st notification and unselect notification");
-            notificationselObj.notificationSelectUnselect();
+            notificationselObj.notificationSelectUnselect(user.Username,user.Password);
 
         }
 
         [Test, Order(2)]
         public void notifSelectUnselectMulti()
         {
+            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\manageRequest_Data.json");
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+            User user = users.ElementAt(0);
             MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials and select 1st notification and unselect notification");
-            notificationselObj.notificationSelUnselMultiple();
+            notificationselObj.notificationSelUnselMultiple(user.Username, user.Password);
 
         }
         [Test, Order(3)]
         public void unselectAll()
         {
+            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\manageRequest_Data.json");
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+            User user = users.ElementAt(0);
             MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials and select 1st notification and unselect notification");
-            notificationselObj.unselAllNotification();
+            notificationselObj.unselAllNotification(user.Username, user.Password);
 
         }
 

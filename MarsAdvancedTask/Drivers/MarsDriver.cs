@@ -27,9 +27,9 @@ namespace MarsAdvancedTask.Driver
         public void MarsDriverStartWebsite()
         {
             MarsExtentReporting.MarsExtentReportingCreateTest(TestContext.CurrentContext.Test.MethodName);
-             marsDriver = new EdgeDriver();
+           //  marsDriver = new EdgeDriver();
            // marsDriver = new ChromeDriver();
-         //  marsDriver = new ChromeDriver(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask");
+          marsDriver = new ChromeDriver(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask");
             marsDriver.Manage().Window.Maximize();
             
             

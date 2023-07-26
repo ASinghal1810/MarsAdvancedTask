@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarsAdvancedTask.ComponentsProfilePage
+namespace MarsAdvancedTask.Pages.Dashboard
 {
     [TestFixture]
     [Parallelizable]
@@ -26,103 +26,99 @@ namespace MarsAdvancedTask.ComponentsProfilePage
         private IWebElement loginButton => marsDriver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
         private IWebElement dashboardTab => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[1]/div/a[1]"));
         private IWebElement selectnotificationCheckbox => marsDriver.FindElement(By.XPath("//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[2]/span/span/div/div[1]/div/div/div[3]/input"));
-        
-       List<IWebElement> checkboxes = new List<IWebElement>(marsDriver.FindElements(By.CssSelector("input[type='checkbox']")));
+
+        List<IWebElement> checkboxes = new List<IWebElement>(marsDriver.FindElements(By.CssSelector("input[type='checkbox']")));
 
         private IWebElement checkbox2 => marsDriver.FindElement(By.XPath("//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[2]/span/span/div/div[2]/div/div/div[3]/input"));
         private IWebElement checkbox3 => marsDriver.FindElement(By.XPath("//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[2]/span/span/div/div[3]/div/div/div[3]/input"));
 
         private IWebElement unselAll => marsDriver.FindElement(By.XPath("//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[1]/div[2]"));
 
-        public void notificationSelectUnselect()
+        public void notificationSelectUnselect(string Username, string Password)
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\manageRequest_Data.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(0);
-
+           
             //Do login
-            Thread.Sleep(1000);
+           
             signInButton.Click();
-            loginEmailaddress.SendKeys(user.Username);
-            loginPassword.SendKeys(user.Password);
+            loginEmailaddress.SendKeys(Username);
+            loginPassword.SendKeys(Password);
             rememberMe.Click();
             loginButton.Click();
 
             //Go to Dashboard
             MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"account-profile-section\"]/div/section[1]/div/a[1]");
-            Thread.Sleep(1000);
+           
             dashboardTab.Click();
 
             //select 1st notification
             MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[2]/span/span/div/div[1]/div/div/div[3]/input");
-            Thread.Sleep(1000);
+
             Assert.IsFalse(selectnotificationCheckbox.Selected, "Checkbox is checked, but it should be unchecked.");
             selectnotificationCheckbox.Click();
             Assert.IsTrue(selectnotificationCheckbox.Selected, "Checkbox is unchecked, but it should be checked.");
-            Thread.Sleep(2000);
+            
             //unselect 1st notification
             selectnotificationCheckbox.Click();
             Assert.IsFalse(selectnotificationCheckbox.Selected, "Checkbox is checked, but it should be unchecked.");
 
-            
+
 
         }
-        public void notificationSelUnselMultiple()
+        public void notificationSelUnselMultiple(string Username, string Password)
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\manageRequest_Data.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(0);
+           
+
 
             //Do login
-            Thread.Sleep(1000);
+            
             signInButton.Click();
-            loginEmailaddress.SendKeys(user.Username);
-            loginPassword.SendKeys(user.Password);
+            loginEmailaddress.SendKeys(Username);
+            loginPassword.SendKeys(Password);
             rememberMe.Click();
             loginButton.Click();
 
             //Go to Dashboard
             MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"account-profile-section\"]/div/section[1]/div/a[1]");
-            Thread.Sleep(1000);
+            
             dashboardTab.Click();
 
             //select 1st notification
             MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[2]/span/span/div/div[1]/div/div/div[3]/input");
-            Thread.Sleep(1000);
+            
             Assert.IsFalse(selectnotificationCheckbox.Selected, "Checkbox is checked, but it should be unchecked.");
             selectnotificationCheckbox.Click();
             Assert.IsTrue(selectnotificationCheckbox.Selected, "Checkbox is unchecked, but it should be checked.");
-            Thread.Sleep(2000);
+           
 
 
             //select 2nd notification
             MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[2]/span/span/div/div[2]/div/div/div[3]/input");
-            Thread.Sleep(1000);
+            
             Assert.IsFalse(checkbox2.Selected, "Checkbox is checked, but it should be unchecked.");
             checkbox2.Click();
             Assert.IsTrue(checkbox2.Selected, "Checkbox is unchecked, but it should be checked.");
-            Thread.Sleep(2000);
+           
 
             //select 3rd notification
             MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[2]/span/span/div/div[3]/div/div/div[3]/input");
-            Thread.Sleep(1000);
+            
             Assert.IsFalse(checkbox3.Selected, "Checkbox is checked, but it should be unchecked.");
             checkbox3.Click();
             Assert.IsTrue(checkbox3.Selected, "Checkbox is unchecked, but it should be checked.");
-            Thread.Sleep(2000);
+            
 
             //unselect 1st notification
             selectnotificationCheckbox.Click();
             Assert.IsFalse(selectnotificationCheckbox.Selected, "Checkbox is checked, but it should be unchecked.");
-            Thread.Sleep(1000);
+           
             //unselect 2nd notification
             checkbox2.Click();
             Assert.IsFalse(checkbox2.Selected, "Checkbox is checked, but it should be unchecked.");
-            Thread.Sleep(1000);
+            
             //unselect 3rd notification
             checkbox3.Click();
             Assert.IsFalse(checkbox3.Selected, "Checkbox is checked, but it should be unchecked.");
-            Thread.Sleep(1000);
+            
 
 
 
@@ -161,61 +157,59 @@ namespace MarsAdvancedTask.ComponentsProfilePage
         //    }
 
         //}
-    
 
 
-        public void unselAllNotification()
+
+        public void unselAllNotification(string Username, string Password)
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\manageRequest_Data.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(0);
+           
 
             //Do login
-            Thread.Sleep(1000);
+            
             signInButton.Click();
-            loginEmailaddress.SendKeys(user.Username);
-            loginPassword.SendKeys(user.Password);
+            loginEmailaddress.SendKeys(Username);
+            loginPassword.SendKeys(Password);
             rememberMe.Click();
             loginButton.Click();
 
             //Go to Dashboard
             MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"account-profile-section\"]/div/section[1]/div/a[1]");
-            Thread.Sleep(1000);
+            
             dashboardTab.Click();
 
             //select 1st notification
             MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[2]/span/span/div/div[1]/div/div/div[3]/input");
-            Thread.Sleep(1000);
+
             Assert.IsFalse(selectnotificationCheckbox.Selected, "Checkbox is checked, but it should be unchecked.");
             selectnotificationCheckbox.Click();
             Assert.IsTrue(selectnotificationCheckbox.Selected, "Checkbox is unchecked, but it should be checked.");
-            Thread.Sleep(2000);
+
 
 
             //select 2nd notification
             MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[2]/span/span/div/div[2]/div/div/div[3]/input");
-            Thread.Sleep(1000);
+            
             Assert.IsFalse(checkbox2.Selected, "Checkbox is checked, but it should be unchecked.");
             checkbox2.Click();
             Assert.IsTrue(checkbox2.Selected, "Checkbox is unchecked, but it should be checked.");
-            Thread.Sleep(2000);
+            
 
             //select 3rd notification
             MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[2]/span/span/div/div[3]/div/div/div[3]/input");
-            Thread.Sleep(1000);
+
             Assert.IsFalse(checkbox3.Selected, "Checkbox is checked, but it should be unchecked.");
             checkbox3.Click();
             Assert.IsTrue(checkbox3.Selected, "Checkbox is unchecked, but it should be checked.");
-            Thread.Sleep(2000);
+          
 
             //click on unselect button
-            MarsWait.MarsWaitToBeClickable("XPath",10, "//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[1]/div[2]");
+            MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[1]/div[2]");
             unselAll.Click();
-           
+
             Assert.IsFalse(selectnotificationCheckbox.Selected, "Checkbox is checked, but it should be unchecked.");
-         
+
             Assert.IsFalse(checkbox2.Selected, "Checkbox is checked, but it should be unchecked.");
-          
+
             Assert.IsFalse(checkbox3.Selected, "Checkbox is checked, but it should be unchecked.");
         }
 

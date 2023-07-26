@@ -12,6 +12,25 @@
     "Username": "jeelpatel508@gmail.com",
     "Password": "Zalak9407",
     "skill": {
+      "Addskill": "Reading",
+      "Chooselevel": "Beginner"
+    }
+
+  },
+  {
+    "Username": "jeelpatel508@gmail.com",
+    "Password": "Zalak9407",
+    "skill": {
+      "Addskill": "Writing",
+      "Chooselevel": "Beginner"
+    }
+
+  },
+  
+  {
+    "Username": "jeelpatel508@gmail.com",
+    "Password": "Zalak9407",
+    "skill": {
       "Addskill": "learning",
       "Chooselevel": "Beginner"
     }
@@ -21,7 +40,7 @@
     "Username": "jeelpatel508@gmail.com",
     "Password": "Zalak9407",
     "skillUpdate": {
-      "Addskill": "Reading",
+      "Addskill": "Abc",
       "Chooselevel": "Intermediate"
     }
   },
@@ -29,10 +48,10 @@
     "Username": "jeelpatel508@gmail.com",
     "Password": "Zalak9407",
     "sameSkillUpdate": {
-      "Addskill": "Reading",
+      "Addskill": "Abc",
       "Chooselevel": "Intermediate"
     }
   }
- 
+
 
 ]

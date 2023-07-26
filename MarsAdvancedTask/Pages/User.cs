@@ -31,6 +31,7 @@ namespace MarsAdvancedTask.Pages
         public SkillUpdate SkillUpdate { get; set; }
         public SameSkillUpdate SameSkillUpdate { get; set; }
         public SearchSkill SearchSkill { get; set; }
+        public string EnterSkill { get; internal set; }
     }
     public class Skill
     {

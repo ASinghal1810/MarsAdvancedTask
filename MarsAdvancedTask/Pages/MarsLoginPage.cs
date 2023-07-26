@@ -18,8 +18,7 @@ namespace MarsAdvancedTask.Pages
 {
     public class MarsLoginPage : MarsDriver
     {
-        // private User i;
-
+        
 
         // Login Action
         private IWebElement signInButton => marsDriver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
@@ -33,17 +32,14 @@ namespace MarsAdvancedTask.Pages
         private IWebElement emailVerification => marsDriver.FindElement(By.CssSelector(".fluid.ui.teal.button"));
 
         private IWebElement signof => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/a[2]/button"));
-        public void SignInAction()
+       
+        
+        public void SignInAction(string Username, string Password)
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            //for (int counter = 0; counter <= users.Count; counter++)
-            User user = users.ElementAt(0);
            
-                    Thread.Sleep(1000);
                     signInButton.Click();
-                    loginEmailaddress.SendKeys(user.Username);
-                    loginPassword.SendKeys(user.Password);
+                    loginEmailaddress.SendKeys(Username);
+                    loginPassword.SendKeys(Password);
                     rememberMe.Click();
                     loginButton.Click();
             // Assertion message
@@ -58,15 +54,13 @@ namespace MarsAdvancedTask.Pages
 
             }
         }
-        public void invailEmailaddress()
+        public void invailEmailaddress(string Username,string Password)
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(1);
+
            
             signInButton.Click();
-            loginEmailaddress.SendKeys(user.Username);
-            loginPassword.SendKeys(user.Password);
+            loginEmailaddress.SendKeys(Username);
+            loginPassword.SendKeys(Password);
             rememberMe.Click();
             loginButton.Click();
             Thread.Sleep(1000);
@@ -82,15 +76,12 @@ namespace MarsAdvancedTask.Pages
           
         }
 
-        public void invailPassword()
+        public void invailPassword(string Username,string Password)
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(2);
-            
+           
             signInButton.Click();
-            loginEmailaddress.SendKeys(user.Username);
-            loginPassword.SendKeys(user.Password);
+            loginEmailaddress.SendKeys(Username);
+            loginPassword.SendKeys(Password);
             rememberMe.Click();
             loginButton.Click();
 
@@ -104,16 +95,12 @@ namespace MarsAdvancedTask.Pages
             }
         }
 
-        public void invalidEmailPassword()
+        public void invalidEmailPassword(string Username, string Password)
         {
-
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(3);
             
             signInButton.Click();
-            loginEmailaddress.SendKeys(user.Username);
-            loginPassword.SendKeys(user.Password);
+            loginEmailaddress.SendKeys(Username);
+            loginPassword.SendKeys(Password);
             rememberMe.Click();
             loginButton.Click();
 
@@ -127,15 +114,13 @@ namespace MarsAdvancedTask.Pages
                 Assert.Fail("Actual message and expected message do not match!");
             }
         }
-        public void nullEmailaddressPassword()
+        public void nullEmailaddressPassword(string Username, string Password)
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(4);
+            
 
             signInButton.Click();
-            loginEmailaddress.SendKeys(user.Username);
-            loginPassword.SendKeys(user.Password);
+            loginEmailaddress.SendKeys(Username);
+            loginPassword.SendKeys(Password);
             rememberMe.Click();
             loginButton.Click();
             Thread.Sleep(1000);
@@ -150,15 +135,13 @@ namespace MarsAdvancedTask.Pages
             }
 
         }
-        public void nullEmail()
+        public void nullEmail(string Username, string Password)
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(5);
+           
 
             signInButton.Click();
-            loginEmailaddress.SendKeys(user.Username);
-            loginPassword.SendKeys(user.Password);
+            loginEmailaddress.SendKeys(Username);
+            loginPassword.SendKeys(Password);
             rememberMe.Click();
             loginButton.Click();
             Thread.Sleep(1000);
@@ -173,15 +156,13 @@ namespace MarsAdvancedTask.Pages
             }
 
         }
-        public void nullPassword()
+        public void nullPassword(string Username, string Password)
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(6);
+           
 
             signInButton.Click();
-            loginEmailaddress.SendKeys(user.Username);
-            loginPassword.SendKeys(user.Password);
+            loginEmailaddress.SendKeys(Username);
+            loginPassword.SendKeys(Password);
             rememberMe.Click();
             loginButton.Click();
             Thread.Sleep(1000);
@@ -195,15 +176,13 @@ namespace MarsAdvancedTask.Pages
                 Assert.Fail("Actual message and expected message do not match!");
             }
         }
-        public void emptyEmailPassword()
+        public void emptyEmailPassword(string Username, string Password)
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(7);
+           
 
             signInButton.Click();
-            loginEmailaddress.SendKeys(user.Username);
-            loginPassword.SendKeys(user.Password);
+            loginEmailaddress.SendKeys(Username);
+            loginPassword.SendKeys(Password);
             rememberMe.Click();
             loginButton.Click();
             Thread.Sleep(1000);
@@ -218,15 +197,12 @@ namespace MarsAdvancedTask.Pages
             }
 
         }
-        public void emptyEmail()
+        public void emptyEmail(string Username,string Password)
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(8);
-
+           
             signInButton.Click();
-            loginEmailaddress.SendKeys(user.Username);
-            loginPassword.SendKeys(user.Password);
+            loginEmailaddress.SendKeys(Username);
+            loginPassword.SendKeys(Password);
             rememberMe.Click();
             loginButton.Click();
             Thread.Sleep(1000);
@@ -241,15 +217,12 @@ namespace MarsAdvancedTask.Pages
             }
 
         }
-        public void emptyPassword()
+        public void emptyPassword(string Username, string Password)
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(9);
 
             signInButton.Click();
-            loginEmailaddress.SendKeys(user.Username);
-            loginPassword.SendKeys(user.Password);
+            loginEmailaddress.SendKeys(Username);
+            loginPassword.SendKeys(Password);
             rememberMe.Click();
             loginButton.Click();
 
@@ -262,15 +235,12 @@ namespace MarsAdvancedTask.Pages
                 Assert.Fail("Actual message and expected message do not match!");
             }
         }
-        public void invalidEmailNoPassword()
+        public void invalidEmailNoPassword(string Username, string Password)
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(10);
-
+           
             signInButton.Click();
-            loginEmailaddress.SendKeys(user.Username);
-            loginPassword.SendKeys(user.Password);
+            loginEmailaddress.SendKeys(Username);
+            loginPassword.SendKeys(Password);
             rememberMe.Click();
             loginButton.Click();
             Thread.Sleep(1000);

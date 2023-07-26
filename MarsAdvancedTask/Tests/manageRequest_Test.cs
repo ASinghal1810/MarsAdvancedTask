@@ -1,6 +1,8 @@
-﻿using MarsAdvancedTask.ComponentsProfilePage;
-using MarsAdvancedTask.Driver;
+﻿using MarsAdvancedTask.Driver;
 using MarsAdvancedTask.Drivers;
+using MarsAdvancedTask.Pages;
+using MarsAdvancedTask.Pages.ManageRequest;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -17,16 +19,24 @@ namespace MarsAdvancedTask.Tests
         [Test, Order(1)]
         public void acceptReq()
         {
+
+            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\manageRequest_Data.json");
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+            User user = users.ElementAt(0);
             MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials and accept request");
-            manageReqObj.receiveReqAccept();
+            manageReqObj.receiveReqAccept(user.Username,user.Password);
 
 
         }
         [Test, Order(2)]
         public void declineReq()
         {
+            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\manageRequest_Data.json");
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+            User user = users.ElementAt(0);
+            
             MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials and decline request");
-            manageReqObj.reqDecline();
+            manageReqObj.reqDecline(user.Username, user.Password);
 
 
         }

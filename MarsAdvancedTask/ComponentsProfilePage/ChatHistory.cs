@@ -27,42 +27,40 @@ namespace MarsAdvancedTask.ComponentsProfilePage
         private IWebElement Chat => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/a[1]"));
         private IWebElement selectUserChat => marsDriver.FindElement(By.XPath("//*[@id=\"chatList\"]/div[4]/div[2]/div[1]"));
         private IWebElement lastMsgCheck => marsDriver.FindElement(By.XPath("//*[@id=\"right\"]/div"));
-        public void createChatRoom()
+        public void createChatRoom( string Username, string Password,string EnterSkill1)
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\ChatHistory_Data.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(0);
+           
 
             //Do login
-            Thread.Sleep(1000);
+            
             signInButton.Click();
-            loginEmailaddress.SendKeys(user.Username);
-            loginPassword.SendKeys(user.Password);
+            loginEmailaddress.SendKeys(Username);
+            loginPassword.SendKeys(Password);
             rememberMe.Click();
             loginButton.Click();
 
            
             MarsWait.MarsWaitToBeClickable("XPath", 10, " //*[@id=\"account-profile-section\"]/div/div[1]/div[1]/input");
-            Thread.Sleep(1000);
-            searchTab.SendKeys(user.SearchSkill.EnterSkill);
+            
+            searchTab.SendKeys(EnterSkill1);
            
             MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"account-profile-section\"]/div/div[1]/div[1]/i");
-            Thread.Sleep(1000);
+            
             searchButton.Click();
             
             //Choose User from learning skill from list of users
             MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[2]/div/div[2]/div/div/div[7]/div[1]");
-            Thread.Sleep(1000);
+            
             selectuser.Click();
 
-            ////MarsWait.MarsWaitToBeVisible("XPath", 10, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[1]");
+           
             MarsWait.MarsWaitToBeVisible("XPath", 10, "//*[@id=\"service-detail-section\"]/div[2]/div/div[2]/div[2]/div[1]/div/div[1]/div/a/i");
-            Thread.Sleep(1000);
+            
             chatButton.Click();
 
 
             MarsWait.MarsWaitToBeVisible("XPath", 10, "//*[@id=\"chatList\"]/div[2]/div[2]/div[1]");
-            Thread.Sleep(1000);
+            
             chatRoom.Click();
             if (chatRoom.Text=="sweety")
             {
@@ -76,32 +74,31 @@ namespace MarsAdvancedTask.ComponentsProfilePage
 
 
         }
-        public void openConversationSelectedUser()
+        public void openConversationSelectedUser(string Username, string Password)
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\ChatHistory_Data.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(0);
+           
+
 
             //Do login
-            Thread.Sleep(1000);
+
             signInButton.Click();
-            loginEmailaddress.SendKeys(user.Username);
-            loginPassword.SendKeys(user.Password);
+            loginEmailaddress.SendKeys(Username);
+            loginPassword.SendKeys(Password);
             rememberMe.Click();
             loginButton.Click();
 
             //click on chat
             MarsWait.MarsWaitToBeVisible("XPath", 10, "//*[@id=\"account-profile-section\"]/div/div[1]/div[2]/div/a[1]");
-            Thread.Sleep(1000);
+          
             Chat.Click();
 
             //choose user
             MarsWait.MarsWaitToBeVisible("XPath", 10, "//*[@id=\"chatList\"]/div[4]/div[2]/div[1]");
-            Thread.Sleep(1000);
+           
             selectUserChat.Click();
 
             MarsWait.MarsWaitToBeVisible("XPath", 10, "//*[@id=\"right\"]/div");
-            Thread.Sleep(1000);
+            
             lastMsgCheck.Click();
             if (lastMsgCheck.Text== "hi i cant accept your skill sorry")
             {
