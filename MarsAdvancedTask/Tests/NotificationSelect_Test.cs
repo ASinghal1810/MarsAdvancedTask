@@ -36,7 +36,9 @@ namespace MarsAdvancedTask.Tests
             User user = users.ElementAt(0);
             MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials and select 1st notification and unselect notification");
             notificationselObj.notificationSelUnselMultiple(user.Username, user.Password);
-
+            notificationselObj.assertforSelect();
+            notificationselObj.unSelect();
+            notificationselObj.assertforUnselect();
         }
         [Test, Order(3)]
         public void unselectAll()

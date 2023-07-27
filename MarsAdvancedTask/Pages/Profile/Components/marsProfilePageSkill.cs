@@ -44,8 +44,8 @@ namespace MarsAdvancedTask.Pages.Profile.Components
         private IWebElement actualSameSkillUpdate => marsDriver.FindElement(By.XPath("//div[@class='ns-box-inner']"));
         private IWebElement actualDel => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[last()]/tr/td[1]"));
 
-       //  private IWebElement actalskilladdmsg => marsDriver.FindElement(By.CssSelector("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']"));
-        
+          private IWebElement actalskilladdmsg => marsDriver.FindElement(By.CssSelector("[class=\"ns-box ns-growl ns-effect-jelly ns-type-success ns-show\"]"));
+
         public void marsProfilePageSkillAdd()
         {
             string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\skillData.json");
@@ -124,12 +124,13 @@ namespace MarsAdvancedTask.Pages.Profile.Components
             }
 
         }
-        public void marsProfilePageSkillEdit(string Username,string Password, string Addskill, string Chooselevel)
+       
+        public void marsProfilePageSkillEdit(string Username, string Password, string Addskill, string Chooselevel)
         {
-           
+
 
             //Do login
-           
+
             signInButton.Click();
             loginEmailaddress.SendKeys(Username);
             loginPassword.SendKeys(Password);
@@ -137,33 +138,37 @@ namespace MarsAdvancedTask.Pages.Profile.Components
             loginButton.Click();
             //click on skill tab
             MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@class=\"item\" and @data-tab=\"second\"]");
-           
+
             MarsProfilePageSkillsTab.Click();
 
             //click on pen button to edit
 
-            
+
             skillsEditButton.Click();
             addSkillEditText.Clear();
             addSkillEditText.SendKeys(Addskill);
             MarsWait.MarsWaitToBeVisible("XPath", 10, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[last()]/tr/td/div/div[2]/select");
-  
+
             skillLevelEdit.SendKeys(Chooselevel);
 
             //click on update button
             MarsWait.MarsWaitToBeVisible("XPath", 10, "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/tbody[last()]/tr/td/div/span/input[1]");
-            
+
             lastUpdateButton.Click();
 
-            Thread.Sleep(1000);
-            if (actualskillupdate.Text == "Abc")
-            {
-                Console.WriteLine("Pass skill updated");
-            }
-            else
-            {
-                Console.WriteLine("Actual message and expected message do not match!");
-            }
+            Thread.Sleep(2000);
+        }
+        public string alert()
+        {
+            Console.WriteLine(actalskilladdmsg.Text);
+           return actalskilladdmsg.Text;
+
+           
+        }
+        public string updatelst()
+        {
+            Console.WriteLine(actualskillupdate.Text);
+            return actualskillupdate.Text;
         }
 
         public void updateSameSkill(string Username ,string Password, string Addskill, string Chooselevel)

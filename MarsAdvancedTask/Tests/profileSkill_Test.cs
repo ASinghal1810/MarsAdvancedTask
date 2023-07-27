@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace MarsAdvancedTask.Tests
 {
     [TestFixture]
@@ -49,7 +50,9 @@ namespace MarsAdvancedTask.Tests
             User user = users.ElementAt(4);
             MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials");
             skillPage.marsProfilePageSkillEdit(user.Username, user.Password, user.SkillUpdate.Addskill, user.SkillUpdate.Chooselevel);
-           
+           string editSkillalert = skillPage.alert();
+            string skillupdate = skillPage.updatelst();
+            Assert.That(editSkillalert==skillupdate + " has been updated to your skills","Error While update");
 
         }
         [Test, Order(4)]
