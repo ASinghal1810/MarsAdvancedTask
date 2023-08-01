@@ -1,11 +1,9 @@
-<<<<<<< HEAD
-﻿using MarsAdvancedTask.ComponentsProfilePage;
+using MarsAdvancedTask.ComponentsProfilePage;
 using MarsAdvancedTask.Driver;
 using MarsAdvancedTask.Drivers;
 using NUnit.Framework;
-=======
-﻿using MarsAdvancedTask.Driver;
->>>>>>> origin/Eddie
+
+
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -13,25 +11,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarsAdvancedTask.Pages
+namespace MarsAdvancedTask.Pages.Profile
 {
-<<<<<<< HEAD
-    public class MarsProfilePage:MarsDriver
+
+    public class MarsProfilePage : MarsDriver
     {
-        marsProfilePageCertifications marsProPgCertObj = new marsProfilePageCertifications();
+        //marsProfilePageCertifications marsProPgCertObj = new marsProfilePageCertifications();
         MarsMasterPage marsMstrPgObj = new MarsMasterPage();
-        private int i;
+        //  private int i;
 
         public void MarsProfilePageAddNewCertification(int key)
         {
-            MarsExcelLib.MarsExcelLibPopulateInCollection(testDataPath, "Certifications");
-            marsProPgCertObj.marsProfilePageCertificationsAdd(MarsExcelLib.MarsExcelLibReadData(i, "Certificate"), MarsExcelLib.MarsExcelLibReadData(i, "From"), MarsExcelLib.MarsExcelLibReadData(i, "Year"));
-                
+            // MarsExcelLib.MarsExcelLibPopulateInCollection(testDataPath, "Certifications");
+            //marsProPgCertObj.marsProfilePageCertificationsAdd(MarsExcelLib.MarsExcelLibReadData(i, "Certificate"), MarsExcelLib.MarsExcelLibReadData(i, "From"), MarsExcelLib.MarsExcelLibReadData(i, "Year"));
+
         }
 
-=======
-    public class MarsProfilePage : MarsDriver
-    {
+
         // User Details
         private IWebElement availability => marsDriver.FindElement(By.XPath("//*[@id=>\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span/i"));
         private IWebElement fullTimeOption => marsDriver.FindElement(By.XPath("//*[@id=>\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[3]/div/div[2]/div/span/select/option[3]"));
@@ -134,8 +130,8 @@ namespace MarsAdvancedTask.Pages
             // Identify the add button and click on it
             educationAddButton.Click();
         }
->>>>>>> origin/Eddie
+
     }
-       
-    
+
+
 }
