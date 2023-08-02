@@ -1,0 +1,18 @@
+﻿{
+  "profileEarnTarget": [
+    {
+
+      "EarnTarget": "Less than $500 per month"
+
+    },
+    {
+
+      "EarnTarget": "Between $500 and $1000 per month"
+    },
+    {
+
+      "EarnTarget": "More than $1000 per month"
+    }
+  ]
+}
+   

@@ -10,7 +10,7 @@ using MarsAdvancedTask.Driver;
 
 namespace MarsAdvancedTask.Drivers
 {
-    public class MarsExtentReporting: MarsDriver
+    public class MarsExtentReporting : MarsDriver
     {
         private static ExtentReports marsExtentReports;
         private static ExtentTest marsExtentTest;

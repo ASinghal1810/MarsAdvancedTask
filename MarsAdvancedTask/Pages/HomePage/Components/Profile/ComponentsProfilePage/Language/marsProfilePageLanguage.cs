@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarsAdvancedTask.ComponentsProfilePage
+namespace MarsAdvancedTask.Pages.HomePage.Components.Profile.ComponentsProfilePage.Language
 {
-    public class marsProfilePageLanguage:MarsDriver
+    public class marsProfilePageLanguage : MarsDriver
     {
         private IWebElement MarsProfilePageLanguagesTab => marsDriver.FindElement(By.XPath("//*[@class=\"item\" and @data-tab=\"first\"]"));
         private IWebElement MarsProfilePageLanguagesAddNewButton => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div"));

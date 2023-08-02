@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MarsAdvancedTask.Driver
@@ -17,7 +16,7 @@ namespace MarsAdvancedTask.Driver
     {
 
         public static IWebDriver marsDriver;
-        public static string testDataPath = @"C:\Users\ankur\Desktop\MarsAdvancedTask\MarsAdvancedTask\MarsAdvancedTask\MarsAdvancesTaskTestData.xlsx";
+        public static string testDataPath = @"C:\Users\ankur\Desktop\project_Mars\MarsAdvancedTask\MarsAdvancedTask\DataFiles\TestData.json";
         protected MarsBroswer marsBroswer;
 
 

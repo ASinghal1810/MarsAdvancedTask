@@ -1,0 +1,44 @@
+﻿{
+  "certifications": [
+    {
+      "Certificate": "ISTQB Certification",
+      "Institution": "ISTQB",
+      "Year": "2023"
+    },
+    {
+      "Certificate": "ISTQB Certification $$",
+      "Institution": "#ISTQB",
+      "Year": "2023"
+    },
+    {
+      "Certificate": "ISTQB Certification      ",
+      "Institution": "     ISTQB",
+      "Year": "2023"
+    },
+    {
+      "Certificate": "123456",
+      "Institution": "123",
+      "Year": "2023"
+    },
+    {
+      "Certificate": "",
+      "Institution": "",
+      "Year": ""
+    },
+    {
+      "Certificate": "123istqb",
+      "Institution": "ISTQB007",
+      "Year": "2023"
+    },
+    {
+      "Certificate": "ISTQB Certification",
+      "Institution": "ISTQB",
+      "Year": "2023"
+    },
+    {
+      "Certificate": "ISTQB Certification",
+      "Institution": "ISTQB",
+      "Year": "2023"
+    }
+  ]
+}
