@@ -1,7 +1,6 @@
 ﻿using EO.WebBrowser.DOM;
 using MarsAdvancedTask.Driver;
 using MarsAdvancedTask.Drivers;
-using MarsAdvancedTask.Pages;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -12,19 +11,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarsAdvancedTask.Pages.Dashboard
+namespace MarsAdvancedTask.ComponentsProfilePage.Notifications
 {
 
     [TestFixture]
     [Parallelizable]
     public class Notification : MarsDriver
     {
-        private IWebElement signInButton => marsDriver.FindElement(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/a"));
-        private IWebElement loginEmailaddress => marsDriver.FindElement(By.Name("email"));
-        private IWebElement loginPassword => marsDriver.FindElement(By.Name("password"));
-        private IWebElement rememberMe => marsDriver.FindElement(By.Name("rememberDetails"));
-        private IWebElement loginButton => marsDriver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
-        private IWebElement dashboardTab => marsDriver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[1]/div/a[1]"));
+
+
         private IWebElement loadMoreButton => marsDriver.FindElement(By.XPath("//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[2]/span/span/div/div[6]/div/center/a"));
 
         private IWebElement showLessButton => marsDriver.FindElement(By.XPath("//*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[2]/span/span/div/div[11]/div[1]/center/a"));
@@ -35,20 +30,7 @@ namespace MarsAdvancedTask.Pages.Dashboard
 
         public void notificationSeeAll(string Username, string Password)
         {
-           
 
-            //Do login
-            
-            signInButton.Click();
-            loginEmailaddress.SendKeys(Username);
-            loginPassword.SendKeys(Password);
-            rememberMe.Click();
-            loginButton.Click();
-
-            //Go to Dashboard
-            MarsWait.MarsWaitToBeClickable("XPath", 10, "//*[@id=\"account-profile-section\"]/div/section[1]/div/a[1]");
-          
-            dashboardTab.Click();
 
 
             //Click on load more
@@ -64,7 +46,7 @@ namespace MarsAdvancedTask.Pages.Dashboard
 
 
 
-            
+
 
             //Click on ShowLess
             MarsWait.MarsWaitToBeVisible("XPath", 10, " //*[@id=\"notification-section\"]/div[2]/div/div/div[3]/div[2]/span/span/div/div[11]/div[1]/center/a");

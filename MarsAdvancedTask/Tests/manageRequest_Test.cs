@@ -1,7 +1,7 @@
-﻿using MarsAdvancedTask.Driver;
+﻿using MarsAdvancedTask.ComponentsProfilePage.ManageRequests;
+using MarsAdvancedTask.Driver;
 using MarsAdvancedTask.Drivers;
 using MarsAdvancedTask.Pages;
-using MarsAdvancedTask.Pages.ManageRequest;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
@@ -14,29 +14,38 @@ namespace MarsAdvancedTask.Tests
 {
     public class manageRequest_Test:MarsDriver
     {
-        manageRequestReceived manageReqObj = new manageRequestReceived();
-
+        manageRequestReceivedAccept manageReqObj = new manageRequestReceivedAccept();
+        MarsLoginPage loginPage = new MarsLoginPage();
+        ManageRequestButton manageObj = new ManageRequestButton();
+        ManageRequestDecline declineObj = new ManageRequestDecline();
         [Test, Order(1)]
         public void acceptReq()
         {
 
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\manageRequest_Data.json");
+            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
             List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+
             User user = users.ElementAt(0);
             MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials and accept request");
-            manageReqObj.receiveReqAccept(user.Username,user.Password);
+            loginPage.SignInAction(user.Username, user.Password);
+            manageObj.manageRequestTab();
+            manageReqObj.receiveReqAccept();
 
 
         }
         [Test, Order(2)]
         public void declineReq()
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\manageRequest_Data.json");
+            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
             List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+
             User user = users.ElementAt(0);
-            
             MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials and decline request");
-            manageReqObj.reqDecline(user.Username, user.Password);
+            loginPage.SignInAction(user.Username, user.Password);
+            manageObj.manageRequestTab();
+            declineObj.reqDecline();
+
+
 
 
         }

@@ -26,18 +26,18 @@ namespace MarsAdvancedTask.Pages
     {
         public string Username { get; set; }
         public string Password { get; set; }
-        public Skill Skill { get; set; }
+       // public Skill Skill { get; set; }
        
         public SkillUpdate SkillUpdate { get; set; }
         public SameSkillUpdate SameSkillUpdate { get; set; }
         public SearchSkill SearchSkill { get; set; }
         public string EnterSkill { get; internal set; }
     }
-    public class Skill
-    {
-        public string Addskill { get; set; }
-        public string Chooselevel { get; set; }
-    }
+    //public class Skill
+    //{
+    //    public string Addskill { get; set; }
+    //    public string Chooselevel { get; set; }
+    //}
 
     public class SkillUpdate
     {

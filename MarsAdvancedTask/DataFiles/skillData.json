@@ -1,57 +1,39 @@
-[
-  {
-    "Username": "jeelpatel508@gmail.com",
-    "Password": "Zalak9407",
-    "skill": {
+{
+  "skills": [
+    {
       "Addskill": "learning",
       "Chooselevel": "Beginner"
-    }
+    },
 
-  },
-  {
-    "Username": "jeelpatel508@gmail.com",
-    "Password": "Zalak9407",
-    "skill": {
+    {
       "Addskill": "Reading",
       "Chooselevel": "Beginner"
-    }
-
-  },
-  {
-    "Username": "jeelpatel508@gmail.com",
-    "Password": "Zalak9407",
-    "skill": {
+    },
+    {
       "Addskill": "Writing",
       "Chooselevel": "Beginner"
-    }
 
-  },
-  
-  {
-    "Username": "jeelpatel508@gmail.com",
-    "Password": "Zalak9407",
-    "skill": {
+    },
+    {
       "Addskill": "learning",
       "Chooselevel": "Beginner"
-    }
-
-  },
-  {
-    "Username": "jeelpatel508@gmail.com",
-    "Password": "Zalak9407",
-    "skillUpdate": {
-      "Addskill": "Abc",
+    },
+    {
+      "Addskill": "Abc ",
       "Chooselevel": "Intermediate"
-    }
-  },
-  {
-    "Username": "jeelpatel508@gmail.com",
-    "Password": "Zalak9407",
-    "sameSkillUpdate": {
-      "Addskill": "Abc",
+    },
+    {
+      "Addskill": "Abc ",
       "Chooselevel": "Intermediate"
+    },
+    {
+      "Addskill": "",
+      "Chooselevel": ""
+    },
+    {
+      "Addskill": "ABC    ",
+      "Chooselevel": "Beginner"
     }
-  }
+  ]
+}
 
-
-]

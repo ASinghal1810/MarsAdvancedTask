@@ -1,7 +1,9 @@
-﻿using MarsAdvancedTask.Driver;
+﻿using MarsAdvancedTask.ComponentsProfilePage;
+using MarsAdvancedTask.ComponentsProfilePage.ProfilePage;
+using MarsAdvancedTask.ComponentsProfilePage.ProfilePageSkill;
+using MarsAdvancedTask.Driver;
 using MarsAdvancedTask.Drivers;
 using MarsAdvancedTask.Pages;
-using MarsAdvancedTask.Pages.Profile.Components;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
@@ -17,9 +19,23 @@ namespace MarsAdvancedTask.Tests
     [Parallelizable]
     public class profileSkill_Test:MarsDriver
     {
-        marsProfilePageSkill skillPage => new marsProfilePageSkill();
-        MarsLoginPage loginPage = new MarsLoginPage();
-
+        MarsLoginPage loginPage;
+        SkillButton skillButtonObj;
+        SkillAdd skillPage;
+        SkillEdit skillEditObj;
+        SkillDelete skillDeleteObj;
+        SkillCancel skillCancelObj;
+       
+        public  profileSkill_Test()
+        {
+             loginPage = new MarsLoginPage();
+             skillButtonObj = new SkillButton();
+             skillPage = new SkillAdd();
+            skillEditObj = new SkillEdit();
+            skillDeleteObj = new SkillDelete();
+            skillCancelObj = new SkillCancel();
+         }
+       
         [Test, Order(1)]
         public void Addskill()
         {
@@ -29,62 +45,62 @@ namespace MarsAdvancedTask.Tests
             User user = users.ElementAt(0);
             MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials");
             loginPage.SignInAction(user.Username, user.Password);
+            skillButtonObj.skillTab();
             skillPage.marsProfilePageSkillAdd();
+            
 
         }
+       
         [Test, Order(2)]
-        public void sameskill()
+        public void skillEdit()
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\skillData.json");
+            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
             List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(3);
+            User user = users.ElementAt(0);
             MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials");
-            skillPage.addSameskill(user.Username,user.Password, user.Skill.Addskill, user.Skill.Chooselevel);
+            loginPage.SignInAction(user.Username, user.Password);
+            skillButtonObj.skillTab();
+            skillEditObj.marsProfilePageSkillEdit();
            
         }
         [Test, Order(3)]
-        public void skillEdit()
+        public void sameSkillEdit()
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\skillData.json");
+            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
             List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(4);
+            User user = users.ElementAt(0);
             MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials");
-            skillPage.marsProfilePageSkillEdit(user.Username, user.Password, user.SkillUpdate.Addskill, user.SkillUpdate.Chooselevel);
-           string editSkillalert = skillPage.alert();
-            string skillupdate = skillPage.updatelst();
-            Assert.That(editSkillalert==skillupdate + " has been updated to your skills","Error While update");
+            loginPage.SignInAction(user.Username, user.Password);
+            skillButtonObj.skillTab();
+            skillPage.updateSameSkill();
+
 
         }
         [Test, Order(4)]
-        public void sameSkillEdit()
+        public void cancelWithoutEdit()
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\skillData.json");
+            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
             List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(5);
+            User user = users.ElementAt(0);
             MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials");
-            skillPage.updateSameSkill(user.Username, user.Password, user.SameSkillUpdate.Addskill, user.SameSkillUpdate.Chooselevel);
+            loginPage.SignInAction(user.Username, user.Password);
+            skillButtonObj.skillTab();
+            skillCancelObj.marsSkillEditCancel();
 
 
         }
         [Test, Order(5)]
-        public void cancelWithoutEdit()
+        public void delSkill()
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\skillData.json");
+            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
             List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(4);
+            User user = users.ElementAt(0);
             MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials");
-            skillPage.marsSkillEditCancel(user.Username, user.Password);
-
-
-        }
-        [Test, Order(6)]
-        public void delLastskill()
-        {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\skillData.json");
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
-            User user = users.ElementAt(3);
-            MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials");
-            skillPage.marsProfilePageSkillDelete(user.Username,user.Password);
+            loginPage.SignInAction(user.Username, user.Password);
+            skillButtonObj.skillTab();
+            skillDeleteObj.marsProfilePageSkillDelete();
+           
+           
 
 
         }

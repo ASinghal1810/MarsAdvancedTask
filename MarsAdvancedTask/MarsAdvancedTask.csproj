@@ -8,6 +8,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Dashboard\**" />
+    <Compile Remove="Pages\ManageRequest\**" />
+    <Compile Remove="Pages\Profile\**" />
+    <EmbeddedResource Remove="Pages\Dashboard\**" />
+    <EmbeddedResource Remove="Pages\ManageRequest\**" />
+    <EmbeddedResource Remove="Pages\Profile\**" />
+    <None Remove="Pages\Dashboard\**" />
+    <None Remove="Pages\ManageRequest\**" />
+    <None Remove="Pages\Profile\**" />
+    <SpecFlowFeatureFiles Remove="Pages\Dashboard\**" />
+    <SpecFlowFeatureFiles Remove="Pages\ManageRequest\**" />
+    <SpecFlowFeatureFiles Remove="Pages\Profile\**" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Pages\Dashboard\**" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Pages\ManageRequest\**" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Pages\Profile\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoItX.Dotnet" Version="3.3.14.5" />
     <PackageReference Include="AutoItX3.Net" Version="3.3.16.1" />
     <PackageReference Include="Castle.Core" Version="5.1.1" />

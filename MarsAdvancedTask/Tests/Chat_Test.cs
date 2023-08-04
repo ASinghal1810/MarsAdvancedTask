@@ -16,27 +16,33 @@ namespace MarsAdvancedTask.Tests
 
     [TestFixture]
     [Parallelizable]
-    public class Chat_Test:MarsDriver
+    public class Chat_Test : MarsDriver
     {
         ChatHistory chatObj = new ChatHistory();
+        MarsLoginPage loginPage = new MarsLoginPage();
         [Test, Order(1)]
         public void newUserChatRoom()
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\ChatHistory_Data.json");
+            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
             List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+
             User user = users.ElementAt(0);
-            MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials and chatroom created for new user to chat");
-          
-            chatObj.createChatRoom(user.Username, user.Password,user.SearchSkill.EnterSkill);
+            MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials");
+            loginPage.SignInAction(user.Username, user.Password);
+           
+            chatObj.createChatRoom();
         }
         [Test, Order(2)]
         public void selectUserFromChatRoom()
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\ChatHistory_Data.json");
+            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
             List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+
             User user = users.ElementAt(0);
+
             MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials and select user from chat room for chat");
-            chatObj.openConversationSelectedUser(user.Username,user.Password);
+            loginPage.SignInAction(user.Username, user.Password);
+            chatObj.openConversationSelectedUser();
         }
 
     }

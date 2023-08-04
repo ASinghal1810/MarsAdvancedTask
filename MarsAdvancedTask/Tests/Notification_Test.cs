@@ -1,7 +1,7 @@
-﻿using MarsAdvancedTask.Driver;
+﻿using MarsAdvancedTask.ComponentsProfilePage.Notifications;
+using MarsAdvancedTask.Driver;
 using MarsAdvancedTask.Drivers;
 using MarsAdvancedTask.Pages;
-using MarsAdvancedTask.Pages.Dashboard;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
