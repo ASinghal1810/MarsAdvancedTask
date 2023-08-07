@@ -15,14 +15,36 @@ namespace MarsAdvancedTask.Tests
     public class Notification_Test:MarsDriver
     {
         Notification notificationObj => new Notification();
+        MarsLoginPage loginPage = new MarsLoginPage();
+        DashboardButton dashboardButtonObj = new DashboardButton();
         [Test, Order(1)]
+        public void loadMoreNotification()
+        {
+            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+
+            User user = users.ElementAt(0);
+           
+            MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials and Show Less notification");
+            loginPage.SignInAction(user.Username, user.Password);
+            dashboardButtonObj.dashboardTab();
+            notificationObj.notificationSeeAll();
+            notificationObj.AssertForLoadMore();
+
+        }
+        [Test, Order(2)]
         public void showLessNotification()
         {
-            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\manageRequest_Data.json");
+            string dataPath = File.ReadAllText(@"C:\Users\jeelp\OneDrive\Desktop\AdvanceTask\MarsAdvancedTask\MarsAdvancedTask\DataFiles\Logindata.json");
             List<User> users = JsonConvert.DeserializeObject<List<User>>(dataPath);
+
             User user = users.ElementAt(0);
+
             MarsExtentReporting.MarsExtentReportingLogInfo("Login with valid credentials and Show Less notification");
-            notificationObj.notificationSeeAll(user.Username,user.Password);
+            loginPage.SignInAction(user.Username, user.Password);
+            dashboardButtonObj.dashboardTab();
+            notificationObj.notificationSeeless();
+            notificationObj.AssertForSeeless();
 
         }
     }
