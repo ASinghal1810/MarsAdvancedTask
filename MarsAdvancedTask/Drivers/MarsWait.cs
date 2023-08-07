@@ -58,5 +58,37 @@ namespace MarsAdvancedTask.Drivers
 
             }
         }
+            public static bool IsElementVisible(string locatorType, int seconds, string locatorValue)
+            {
+                try
+                {
+                    var wait = new WebDriverWait(marsDriver, TimeSpan.FromSeconds(seconds));
+                    if (locatorType == "XPath")
+                    {
+                        wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath(locatorValue)));
+                    }
+                    else if (locatorType == "Id")
+                    {
+                        wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id(locatorValue)));
+                    }
+                    else if (locatorType == "CssSelector")
+                    {
+                        wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector(locatorValue)));
+                    }
+                    else if (locatorType == "Name")
+                    {
+                        wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Name(locatorValue)));
+                    }
+                    return true; // Return true if the element is visible
+                }
+                catch (NoSuchElementException)
+                {
+                    return false; // Return false if the element is not found
+                }
+                catch (TimeoutException)
+                {
+                    return false; // Return false if the element is not visible within the specified timeout
+                }
+            }
     }
 }

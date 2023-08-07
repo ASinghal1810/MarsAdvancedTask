@@ -1,0 +1,39 @@
+{
+  "skills": [
+    {
+      "Addskill": "learning",
+      "Chooselevel": "Beginner"
+    },
+
+    {
+      "Addskill": "Reading",
+      "Chooselevel": "Beginner"
+    },
+    {
+      "Addskill": "Writing",
+      "Chooselevel": "Beginner"
+
+    },
+    {
+      "Addskill": "learning",
+      "Chooselevel": "Beginner"
+    },
+    {
+      "Addskill": "Abc ",
+      "Chooselevel": "Intermediate"
+    },
+    {
+      "Addskill": "Abc ",
+      "Chooselevel": "Intermediate"
+    },
+    {
+      "Addskill": "",
+      "Chooselevel": ""
+    },
+    {
+      "Addskill": "ABC    ",
+      "Chooselevel": "Beginner"
+    }
+  ]
+}
+
